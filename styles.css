@@ -1,0 +1,201 @@
+header{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #659DBD;
+}
+
+.back-home img{
+    width: 30px;
+    height: 30px;
+}
+
+.logo{
+    margin-right: 20px;
+}
+
+.logo img{
+    width: 50px;
+    height: auto;
+}
+
+.navigation{ 
+    display: flex;    
+    margin: 10px auto;
+}
+.navigation div{
+    margin-right: 20px;
+}
+.navigation a{
+    color: white;
+}
+
+.search{
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search input{
+    outline: none;
+    padding: 5px;
+    flex:1;
+}
+.search img{
+    margin-left: 5px;
+}
+
+article{
+    margin: 10px;
+    padding: 10px;
+}
+
+.login {
+    margin-left: 20px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #8D8741;
+    color: #000000;
+    border-radius: 5px;
+}
+
+
+.back-g{
+    position: relative;
+    background: rgba(255, 255, 255, 0.5) url('image/sports.jpg') center/cover;  
+}
+
+.image-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.image-container a{
+    color: #000000;
+}
+
+.image-container div{
+    margin-right: 10px;
+}
+
+.image-container img{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0px;
+}
+
+.image-container p{
+    text-align: center;
+    margin-top: 1px;
+}
+
+.keep-container img{
+    width: 100%;
+    height: auto;
+}
+
+.product-container1{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+}
+
+.container1{
+    background-color: #daad86;
+    max-width: 50%;
+    height: auto;
+    display: flex;
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.container1 img{
+    width:200px;
+    height:200px;
+    border-radius: 8px;
+}
+
+.container2{
+    background-color: #FBEEC1;
+    max-width: 50%;
+    height: auto;
+    display: flex;
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.container2 img{
+    width:200px;
+    height:200px;
+    border-radius: 8px;
+}
+
+.text-button{
+    flex: 2;
+    padding-left: 10px;
+
+}
+
+.text-button a{
+    color: white;
+}
+
+.footer1{
+    background-color: #659DBD;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0;
+}
+
+.footer1 p{
+    padding: 0px;
+    margin: 0;
+}
+
+.footer-icons img{
+    margin-top: 10px;
+    width: 40px;
+    margin: 20px;
+    margin-bottom: 1px;
+}
+
+.footer2{
+    background-color: #8D8741;
+    display: flex;
+    justify-content: space-between;
+    color: #000000;
+}
+
+.footer2 div{
+    margin: 20px;
+    margin-bottom: 1px;
+}
+
+.footer2 a{
+    color: black;
+}
+
+.article-about{
+    background: url('image/banner/sports-about.jpg') ;
+    height: 800px;   
+}
+.article-about p{
+    margin: 30px;
+    margin-bottom: 1px;
+    padding-bottom: 1px;
+}
