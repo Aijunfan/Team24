@@ -1,6 +1,6 @@
 
 Project Name - Team 24 
-Team members: Aijun Fan, 
+Team members: Aijun Fan, Hao Zhang, Yilin Lai, Zheng Tian.
 
 This is a shopping site that showcases different types of shoes.
 
