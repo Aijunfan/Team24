@@ -135,6 +135,7 @@ if (isset($_GET['id'])) {
                         <div class="flex">
                             <span class="title-font font-medium text-2xl text-gray-900">$<?php echo $product['price']; ?></span>
                             <button
+                                id="modalOpenBtn"
                                 class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Bag</button>
                             <button
                                 class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -160,3 +161,25 @@ if (isset($_GET['id'])) {
 
 include 'footer.php';
 ?>
+
+  <script>
+  // JavaScript to handle opening and closing of the modal
+  const modal = document.getElementById('myModal');
+  const modalContent = modal.querySelector('div');
+
+  document.getElementById('modalOpenBtn').addEventListener('click', function(){
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modalContent.style.opacity = '1';
+      modalContent.classList.remove('opacity-0');
+    }, 10); // Start the opacity transition slightly after the modal is shown
+  });
+
+  document.getElementById('modalCloseBtn').addEventListener('click', function(){
+    modalContent.style.opacity = '0';
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modalContent.classList.add('opacity-0');
+    }, 0); // Hide the modal after the opacity transition finishes
+  });
+</script>
