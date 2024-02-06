@@ -26,7 +26,8 @@ Feature 2
 Include more detailed information about Feature 2 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
 
 Feature 3
-Include more detailed information about Feature 3 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
+Set up a portal that allows administrators to import new products, which can include: name, price, description, etc.
+Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
 
 Database Tables
 List the database tables that are part of your project.
