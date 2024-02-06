@@ -14,10 +14,10 @@ Features
 
 In this section, list and describe the features or functionality that you are working on. You can use checkboxes to track the progress of each feature.
 
- Feature 1 (Aijun Fan): Adding shoes pic and sale information
- Feature 2 (Yilin Lai): Detail type of shoes page.
- Feature 3 (Zheng Tian): Purchase page.
- Feature 4 (Hao Zhang): Besting sales shoes (Top 5)
+ Feature 1 (Yilin Lai): Customer sign up table
+ Feature 2 (Hao Zhang): Product list table
+ Feature 3 (Aijun Fan): Suggestion and feedback table
+ Feature 4 (Zheng Tian): Shop infor table
 
 Feature 1
 Include more detailed information about Feature 1 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
