@@ -11,35 +11,6 @@
 </head>
 
 <body>
-    <!-- <header>
-        <div class="logo">
-            <a href='index.html'><img src="image/LOGO/logo1.png" alt="my logo"></a>
-        </div>
-
-        <nav class="navigation">
-            
-            <div><a href='#running1'>Running</a></div>
-            <div><a href='#football2'>Football</a></div>
-            <div><a href='#basketball1'>Basketball</a></div>
-            <div><a href='#hike1'>Hike</a></div>
-            <div><a href=#>Others</a></div>
-            <div><a href='about.html'>About Us</a></div>
-        
-        </nav>
-
-        <div class="search">
-            <form action="#" method="get">
-                <input type="text" name="search" placeholder="Search...">
-                <img src="image/search.png" alt="search icon" width="20" height="20">
-            </form>
-        </div>
-
-        <div class="login">
-            <a href="sign.html">Sign In</a>
-        </div>
-    </header> -->
-
-
     <header class="text-gray-600 body-font">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     <a class="">
@@ -51,7 +22,7 @@
       <a class="mr-5 hover:text-gray-900">Basketball</a>
       <a class="mr-5 hover:text-gray-900">Hike</a>
       <a class="mr-5 hover:text-gray-900">Others</a>
-      <a class="mr-5 hover:text-gray-900">About Us</a>
+      <a class="mr-5 hover:text-gray-900" href="ourteam.php">About Us</a>
     </nav>
     
     <div class="lg:w-1/4 md:w-1/2 w-full ">
