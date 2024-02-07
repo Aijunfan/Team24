@@ -1,0 +1,282 @@
+[
+    {
+        "name": "Goal Master",
+        "category": "football",
+        "price": 99.87,
+        "image": "./image/football/football (1).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Field Sprinter",
+        "category": "football",
+        "price": 117.57,
+        "image": "./image/football/football (2).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Turf Dominator",
+        "category": "football",
+        "price": 98.87,
+        "image": "./image/football/football (3).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "League Star",
+        "category": "football",
+        "price": 137.61,
+        "image": "./image/football/football (4).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Net Breaker",
+        "category": "football",
+        "price": 144.01,
+        "image": "./image/football/football (5).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Pitch Performer",
+        "category": "football",
+        "price": 90.28,
+        "image": "./image/football/football (6).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Match Winner",
+        "category": "football",
+        "price": 117.65,
+        "image": "./image/football/football (7).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Soccer Elite",
+        "category": "football",
+        "price": 88.91,
+        "image": "./image/football/football (8).png",
+        "info": "Designed for precision and power on the field, ensuring peak performance during the game."
+    },
+    {
+        "name": "Court King",
+        "category": "basketball",
+        "price": 52.97,
+        "image": "./image/basketball/basketball (1).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Hoops Legend",
+        "category": "basketball",
+        "price": 109.11,
+        "image": "./image/basketball/basketball (2).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Dunk Master",
+        "category": "basketball",
+        "price": 120.65,
+        "image": "./image/basketball/basketball (3).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Three Pointer",
+        "category": "basketball",
+        "price": 95.62,
+        "image": "./image/basketball/basketball (4).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Ball Handler",
+        "category": "basketball",
+        "price": 127.64,
+        "image": "./image/basketball/basketball (5).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Game Changer",
+        "category": "basketball",
+        "price": 80.86,
+        "image": "./image/basketball/basketball (6).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Rim Shaker",
+        "category": "basketball",
+        "price": 115.0,
+        "image": "./image/basketball/basketball (7).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Basket Pro",
+        "category": "basketball",
+        "price": 85.07,
+        "image": "./image/basketball/basketball (8).png",
+        "info": "Crafted for agility and support on the court, offering unmatched grip and cushioning."
+    },
+    {
+        "name": "Trail Blazer",
+        "category": "hike",
+        "price": 78.71,
+        "image": "./image/hike/hike (1).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Peak Explorer",
+        "category": "hike",
+        "price": 61.41,
+        "image": "./image/hike/hike (2).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Path Finder",
+        "category": "hike",
+        "price": 73.49,
+        "image": "./image/hike/hike (3).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Mountain Walker",
+        "category": "hike",
+        "price": 120.64,
+        "image": "./image/hike/hike (4).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Ridge Runner",
+        "category": "hike",
+        "price": 135.67,
+        "image": "./image/hike/hike (5).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Valley Wanderer",
+        "category": "hike",
+        "price": 127.55,
+        "image": "./image/hike/hike (6).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Summit Conqueror",
+        "category": "hike",
+        "price": 67.71,
+        "image": "./image/hike/hike (7).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Trek Leader",
+        "category": "hike",
+        "price": 99.36,
+        "image": "./image/hike/hike (8).png",
+        "info": "Built for durability and comfort on rugged terrain, providing stability and protection on any trail."
+    },
+    {
+        "name": "Speed Runner",
+        "category": "running",
+        "price": 133.23,
+        "image": "./image/running/running (1).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Marathoner",
+        "category": "running",
+        "price": 94.71,
+        "image": "./image/running/running (2).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Pace Setter",
+        "category": "running",
+        "price": 133.27,
+        "image": "./image/running/running (3).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Track Star",
+        "category": "running",
+        "price": 74.08,
+        "image": "./image/running/running (4).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Road Racer",
+        "category": "running",
+        "price": 50.4,
+        "image": "./image/running/running (5).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Distance Dreamer",
+        "category": "running",
+        "price": 103.25,
+        "image": "./image/running/running (6).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Sprint Specialist",
+        "category": "running",
+        "price": 106.24,
+        "image": "./image/running/running (7).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Race Runner",
+        "category": "running",
+        "price": 69.55,
+        "image": "./image/running/running (8).png",
+        "info": "Engineered for speed and endurance, with lightweight materials and aerodynamic design."
+    },
+    {
+        "name": "Casual Kicker",
+        "category": "others",
+        "price": 109.82,
+        "image": "./image/others/others (1).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Urban Walker",
+        "category": "others",
+        "price": 50.94,
+        "image": "./image/others/others (2).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Gym Sneaker",
+        "category": "others",
+        "price": 64.94,
+        "image": "./image/others/others (3).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Fashion Flyer",
+        "category": "others",
+        "price": 64.3,
+        "image": "./image/others/others (4).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Daily Stepper",
+        "category": "others",
+        "price": 96.63,
+        "image": "./image/others/others (5).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Comfort Cruiser",
+        "category": "others",
+        "price": 100.79,
+        "image": "./image/others/others (6).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Leisure Leader",
+        "category": "others",
+        "price": 94.98,
+        "image": "./image/others/others (7).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    },
+    {
+        "name": "Style Sprinter",
+        "category": "others",
+        "price": 90.58,
+        "image": "./image/others/others (8).png",
+        "info": "Versatile and stylish, perfect for everyday wear with superior comfort and durability."
+    }
+]

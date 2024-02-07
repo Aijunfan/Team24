@@ -9,6 +9,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha256-CSdW2DALEW1KHu1eq0RGssLxFH6SkcY4cF4jAOGb3A4=" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
 </head>
 
 <body class="relative">
@@ -19,12 +20,14 @@
       </a>
       <nav
         class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center title-font text-lg font-medium">
-        <a class="mr-5 hover:text-gray-900">Running</a>
-        <a class="mr-5 hover:text-gray-900">Football</a>
-        <a class="mr-5 hover:text-gray-900">Basketball</a>
-        <a class="mr-5 hover:text-gray-900">Hike</a>
-        <a class="mr-5 hover:text-gray-900">Others</a>
+        <a class="mr-5 hover:text-gray-900" href="index.php">Home</a>
+        <a class="mr-5 hover:text-gray-900" href="products.php?category=running">Running</a>
+        <a class="mr-5 hover:text-gray-900" href="products.php?category=football">Football</a>
+        <a class="mr-5 hover:text-gray-900" href="products.php?category=basketball">Basketball</a>
+        <a class="mr-5 hover:text-gray-900" href="products.php?category=hike">Hike</a>
+        <a class="mr-5 hover:text-gray-900" href="products.php?category=others">Others</a>
         <a class="mr-5 hover:text-gray-900" href="ourteam.php">About Us</a>
+        <a class="mr-5 hover:text-gray-900" href="upload.php">Upload json</a>
       </nav>
 
       <div class="lg:w-1/4 md:w-1/2 w-full ">

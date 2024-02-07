@@ -19,6 +19,32 @@ In this section, list and describe the features or functionality that you are wo
  Feature 3 (Aijun Fan): Suggestion and feedback table
  Feature 4 (Zheng Tian): Shop infor table
 
+
+
+
+Product list table:
+CREATE TABLE Products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(50),
+    price DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255),
+    info TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+ProductSizes list table:
+CREATE TABLE ProductSizes (
+    size_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    size VARCHAR(10) NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);
+
+
+
+
+
+
 Feature 1
 Include more detailed information about Feature 1 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
 

@@ -32,6 +32,7 @@
     </div>
   </div>
 </section>
+
 <?php include 'products.php'; ?>
 <?php include 'feedback.php'; ?>
 <?php include 'footer.php'; ?>
