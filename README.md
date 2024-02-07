@@ -52,7 +52,7 @@ Feature 2
 Include more detailed information about Feature 2 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
 
 Feature 3
-Set up an interface to collect customer feedback and suggestions with forms such as ID, email or phone number, subject, content, etc.
+Set up an interface to collect customer feedback and suggestions with forms such as ID, email or phone number, topic, content, etc.
 Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
 
 Database Tables
