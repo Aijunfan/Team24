@@ -56,7 +56,7 @@ echo "<script>console.log('PHP Data: ', JSON.parse('$jsonData'));</script>";
                     <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="<?php echo $products[$i]['image']; ?>">
                 </a>
                 <div class="mt-4">
-                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1"><?php echo ucfirst($category); ?></h3>
                     <h2 class="text-gray-900 title-font text-lg font-medium">$<?php echo $products[$i]['price']; ?></h2>
                     <p class="mt-1"><?php echo $products[$i]['name']; ?></p>
                 </div>
