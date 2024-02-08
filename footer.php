@@ -64,7 +64,7 @@
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
       </svg> -->
                 <a class="">
-                    <img src="image/LOGO/logo.webp" alt="my logo" class="h-20 object-contain">
+                    <img src="image/LOGO/logo_2.png" alt="my logo" class="h-20 object-contain">
                 </a>
                 <span class="ml-3 text-xl text-slate-200">24-Sports</span>
             </a>

@@ -9,6 +9,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha256-CSdW2DALEW1KHu1eq0RGssLxFH6SkcY4cF4jAOGb3A4=" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="main.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <script src="main.js"></script>
 </head>
 
@@ -16,10 +17,10 @@
   <header class="text-gray-600 body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
       <a class="" href="index.php">
-        <img src="image/LOGO/logo.webp" alt="my logo" class="h-20 object-contain">
+        <img src="image/LOGO/logo.png" alt="my logo" class="h-20 object-contain">
       </a>
       <nav
-        class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center title-font text-lg font-medium">
+        class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center title-font font-medium">
         <a class="mr-5 hover:text-gray-900" href="index.php">Home</a>
         <a class="mr-5 hover:text-gray-900" href="products.php?category=running">Running</a>
         <a class="mr-5 hover:text-gray-900" href="products.php?category=football">Football</a>
@@ -30,9 +31,9 @@
         <a class="mr-5 hover:text-gray-900" href="upload.php">Upload json</a>
       </nav>
 
-      <div class="lg:w-1/4 md:w-1/2 w-full ">
+      <div class="lg:w-1/3 md:w-1/2 w-full ">
         <div
-          class="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start items-center">
+          class="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center  md:justify-start items-center">
           <div class="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
             <input type="text" id="footer-field" name="footer-field"
               class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
@@ -44,13 +45,33 @@
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
           </button>
+
+          <div id="nav-cart" class="relative inline-flex justify-center items-center border-0 px-3" data-pre="Cart">
+            <a data-var="anchor" title="Bag Items: 5" aria-label="Bag Items: 5" rel="nofollow" data-type="click_navCart"
+              data-path="cart" href="cart.php" class="icon-btn ripple d-sm-b flex justify-center items-center"
+              data-pre="ILink" previewlistener="true">
+              <div
+                class="flex justify-center items-center hover:bg-gray-200 rounded-full p-1 transition-all duration-150">
+                <svg aria-hidden="true" class="w-8 h-8" focusable="false" viewBox="0 0 24 24" role="img" width="24px"
+                  height="24px" fill="none">
+                  <path stroke="currentColor" stroke-width="1.5"
+                    d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5">
+                  </path>
+                </svg>
+                <span class="absolute text-xs" style="top:14px" data-var="jewel">5</span>
+              </div>
+            </a>
+          </div>
+
+
         </div>
       </div>
     </div>
   </header>
 
   <div id="myModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-  <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white opacity-0 transition-opacity duration-300 ease-in-out">
+    <div
+      class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white opacity-0 transition-opacity duration-300 ease-in-out">
       <!-- Modal content -->
       <!-- Your modal content here -->
       <div class="flex justify-between items-center">
@@ -67,8 +88,9 @@
         </div>
       </div>
       <div class="flex justify-between items-center mt-4">
-        <button class="px-4 py-2 bg-white text-sm font-medium rounded border border-gray-300 hover:bg-gray-50">View Bag (7)</button>
-        <button class="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-900">Checkout</button>
+      <a href="cart.php"><button class="px-4 py-2 bg-white text-sm font-medium rounded border border-gray-300 hover:bg-gray-50">View Bag
+          (7)</button></a>
+          <a href="cart.php"><button class="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-900">Checkout</button></a>
       </div>
 
       <p class="text
@@ -87,3 +109,6 @@
     </div>
   </div>
 
+  <script>
+    updateCartQuantity();
+  </script>

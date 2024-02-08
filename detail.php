@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
                     <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
                         src="<?php echo $product['image']; ?>">
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                        <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
+                        <h2 class="text-sm title-font text-gray-500 tracking-widest"><?php echo ucfirst($product["category"])?> Shoes</h2>
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
                             <?php echo $product['name']; ?>
                         </h1>
@@ -120,9 +120,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="flex">
                             <span class="title-font font-medium text-2xl text-gray-900">$<?php echo $product['price']; ?></span>
-                            <button
-                                id="modalOpenBtn"
-                                class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Bag</button>
+                            <button onclick="addToCart(<?php echo htmlspecialchars(json_encode($product)); ?>)" id="modalOpenBtn" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Bag</button>
                             <button
                                 class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -151,23 +149,64 @@ $conn->close();
 ?>
 
   <script>
-  // JavaScript to handle opening and closing of the modal
-  const modal = document.getElementById('myModal');
-  const modalContent = modal.querySelector('div');
+    // JavaScript to handle opening and closing of the modal
+    const modal = document.getElementById('myModal');
+    const modalContent = modal.querySelector('div');
 
-  document.getElementById('modalOpenBtn').addEventListener('click', function(){
+    document.getElementById('modalOpenBtn').addEventListener('click', function(event){
     modal.classList.remove('hidden');
     setTimeout(() => {
-      modalContent.style.opacity = '1';
-      modalContent.classList.remove('opacity-0');
+        modalContent.style.opacity = '1';
+        modalContent.classList.remove('opacity-0');
     }, 10); // Start the opacity transition slightly after the modal is shown
-  });
+    event.stopPropagation(); // 防止事件冒泡到document
+    });
 
-  document.getElementById('modalCloseBtn').addEventListener('click', function(){
+    document.getElementById('modalCloseBtn').addEventListener('click', function(){
     modalContent.style.opacity = '0';
-    setTimeout(() => {
-      modal.classList.add('hidden');
-      modalContent.classList.add('opacity-0');
-    }, 0); // Hide the modal after the opacity transition finishes
-  });
+        modal.classList.add('hidden');
+        modalContent.classList.add('opacity-0');
+    });
+
+    // Adding an event listener to the whole document to close the modal if clicked outside of modalContent
+    document.addEventListener('click', function(event){
+    // Check if the modal is not hidden
+    if (!modal.classList.contains('hidden')) {
+        // Check if the click target is not inside modalContent and the click is not the modalOpenBtn
+        if (!modalContent.contains(event.target) && event.target.id !== 'modalOpenBtn') {
+        modalContent.style.opacity = '0';
+            modal.classList.add('hidden');
+            modalContent.classList.add('opacity-0');
+        }
+    }
+    });
+
+    function addToCart(product) {
+    let cart = [];
+    if (localStorage.getItem('cart')) {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    
+    // 检查产品是否已经在购物车中
+    const existingProductIndex = cart.findIndex(item => item.product_id === product.product_id);
+    if (existingProductIndex !== -1) {
+        // 如果已经存在，则增加数量
+        cart[existingProductIndex].quantity += 1;
+    } else {
+        // 如果不存在，添加新产品到购物车
+        product.quantity = 1; // 设置初始数量
+        cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    const shit = JSON.parse(localStorage.getItem('cart'));
+    console.log(shit);
+    // 调用函数以更新数量
+        updateCartQuantity();
+    }
+
+
+
+
+
 </script>
