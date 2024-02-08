@@ -40,6 +40,16 @@ CREATE TABLE ProductSizes (
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
+//feedback table
+CREATE TABLE `24_feedback` (
+  `id` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` bigint NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 
 
 

@@ -1,5 +1,5 @@
 <?php
-$host = 'php24-db-1'; // 或者 MySQL 服务器的 IP
+$host = 'php_aijun_24-db-1'; // Aijun Fan's Localhost db,please change to your own one
 $db_user = 'app1';
 $db_password = 'password';
 $db_name = 'app1';
