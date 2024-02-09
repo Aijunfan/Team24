@@ -26,3 +26,12 @@ CREATE TABLE ProductSizes (
     size VARCHAR(10) NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );  
+
+CREATE TABLE `24_feedback` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` bigint NOT NULL,
+  `message` varchar(500) NOT NULL
+)
+
