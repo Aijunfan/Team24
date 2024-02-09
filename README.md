@@ -1,4 +1,4 @@
-![image](https://github.com/Aijunfan/Team24/assets/127038124/3623197d-440b-4f74-8f28-e8900bf3eda7)![image](https://github.com/Aijunfan/Team24/assets/127038124/d1ba7a0f-d0e8-44f4-af8c-c8cebdc3f13c)
+
 # Project Name - Team 24 
 
 ## Team members: Aijun Fan, Hao Zhang, Yilin Lai, Zheng Tian.
@@ -37,7 +37,7 @@ Table 1 (Created By YilinLai): Users
 Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes
 Table 3 (Created By Aijun Fan): 24_feedback
 Include the ER Diagram of the database.
-
+![image](https://github.com/Aijunfan/Team24/assets/127038124/3623197d-440b-4f74-8f28-e8900bf3eda7)
 
 Created Forms
 List and describe any forms that have been created as part of your project. Include details about the purpose of each form and any validation logic.
