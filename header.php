@@ -1,3 +1,4 @@
+<!-- header.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,15 @@
 
 <body class="relative">
   <header class="text-gray-600 body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <div class="flex bg-gray-100 h-6 text-xs	items-center justify-end px-4">
+      <a href="join.php" class="hover:text-gray-900 px-4">Join Us</a>
+      <span >|</span>
+      <a href="login.php" class="hover:text-gray-900 px-4">Sign In</a>
+      <span >|</span>
+      <a href="index.php#feedback" class="hover:text-gray-900 px-4">Feedback</a>
+      
+    </div>
+    <div class="container mx-auto flex flex-wrap p-4 flex-col md:flex-row items-center">
       <a class="" href="index.php">
         <img src="image/LOGO/logo.png" alt="my logo" class="h-20 object-contain">
       </a>

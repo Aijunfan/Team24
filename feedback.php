@@ -1,4 +1,4 @@
-<section class="text-gray-600 body-font relative">
+<section id="feedback" class="text-gray-600 body-font relative">
   <div class="container px-5 py-24 mx-auto flex">
     <div class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
       <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=HAMK&ie=UTF8&t=&z=14&iwloc=B&output=embed" style="filter: grayscale(1) contrast(1.2) opacity(0.4);" style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>

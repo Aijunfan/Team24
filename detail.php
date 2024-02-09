@@ -1,3 +1,4 @@
+<!-- detail.php -->
 <?php
 include 'header.php';
 require 'db_config.php'; // 确保已包含数据库配置文件
@@ -153,14 +154,9 @@ $conn->close();
     const modal = document.getElementById('myModal');
     const modalContent = modal.querySelector('div');
 
-    document.getElementById('modalOpenBtn').addEventListener('click', function(event){
-    modal.classList.remove('hidden');
-    setTimeout(() => {
-        modalContent.style.opacity = '1';
-        modalContent.classList.remove('opacity-0');
-    }, 10); // Start the opacity transition slightly after the modal is shown
-    event.stopPropagation(); // 防止事件冒泡到document
-    });
+    // document.getElementById('modalOpenBtn').addEventListener('click', function(event){
+    
+    // });
 
     document.getElementById('modalCloseBtn').addEventListener('click', function(){
     modalContent.style.opacity = '0';
@@ -182,31 +178,33 @@ $conn->close();
     });
 
     function addToCart(product) {
-    let cart = [];
-    if (localStorage.getItem('cart')) {
-        cart = JSON.parse(localStorage.getItem('cart'));
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modalContent.style.opacity = '1';
+            modalContent.classList.remove('opacity-0');
+        }, 10); // Start the opacity transition slightly after the modal is shown
+        event.stopPropagation(); // 防止事件冒泡到document
+        let cart = [];
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+        }
+        
+        // 检查产品是否已经在购物车中
+        const existingProductIndex = cart.findIndex(item => item.product_id === product.product_id);
+        if (existingProductIndex !== -1) {
+            // 如果已经存在，则增加数量
+            cart[existingProductIndex].quantity += 1;
+        } else {
+            // 如果不存在，添加新产品到购物车
+            product.quantity = 1; // 设置初始数量
+            cart.push(product);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const shit = JSON.parse(localStorage.getItem('cart'));
+        console.log(shit);
+        // 调用函数以更新数量
+            updateCartQuantity();
     }
-    
-    // 检查产品是否已经在购物车中
-    const existingProductIndex = cart.findIndex(item => item.product_id === product.product_id);
-    if (existingProductIndex !== -1) {
-        // 如果已经存在，则增加数量
-        cart[existingProductIndex].quantity += 1;
-    } else {
-        // 如果不存在，添加新产品到购物车
-        product.quantity = 1; // 设置初始数量
-        cart.push(product);
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    const shit = JSON.parse(localStorage.getItem('cart'));
-    console.log(shit);
-    // 调用函数以更新数量
-        updateCartQuantity();
-    }
-
-
-
-
 
 </script>

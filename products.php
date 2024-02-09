@@ -1,3 +1,4 @@
+<!-- products.php -->
 <?php
 $currentScript = basename($_SERVER['PHP_SELF']);
 if ($currentScript != 'index.php') {
@@ -6,8 +7,7 @@ if ($currentScript != 'index.php') {
 require 'db_config.php';
       // 假设类目通过URL参数传递，例如 products.php?category=basketball
     $category = isset($_GET['category']) ? $_GET['category'] : 'basketball';
-
-    $query = "SELECT * FROM Products WHERE category=?";
+    $query = "SELECT product_id, name, price, image, category FROM Products WHERE category=?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $category);
     $stmt->execute();
@@ -21,7 +21,7 @@ require 'db_config.php';
     $jsonData = json_encode($products);
 
 // 输出JavaScript代码到HTML中，使其在浏览器控制台中打印数据
-echo "<script>console.log('PHP Data: ', JSON.parse('$jsonData'));</script>";
+// echo "<script>console.log('PHP Data: ', JSON.parse('$jsonData'));</script>";
 ?>
 
 <section class="text-gray-600 body-font">
