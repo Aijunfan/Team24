@@ -87,6 +87,7 @@ ob_end_flush();
 ?>
 
 <?php include 'header.php'; ?>
+
 <section class="text-gray-600 body-font">
     <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
         <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -110,6 +111,12 @@ ob_end_flush();
                 <div class="ps-4 text-sm font-normal">Login successfully.</div>
             </div> -->
             <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Login</h2>
+            <!-- 检查并显示反馈消息 -->
+            <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($login_err)): ?>
+                <div class="alert alert-info">
+                    <?php echo $login_err; ?>
+                </div>
+            <?php endif; ?>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="relative mb-4">
                     <label for="username" class="leading-7 text-sm text-gray-600">Username</label>

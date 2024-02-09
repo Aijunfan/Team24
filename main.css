@@ -741,10 +741,6 @@ video {
   margin-top: 2rem;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .block {
   display: block;
 }
@@ -807,10 +803,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.min-h-screen {
-  min-height: 100vh;
 }
 
 .w-1\/2 {
@@ -880,6 +872,10 @@ video {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .resize-none {
@@ -1058,11 +1054,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-blue-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1108,10 +1099,6 @@ video {
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-6 {
-  padding: 1.5rem;
 }
 
 .px-3 {
@@ -1191,12 +1178,12 @@ video {
   padding-left: 0.75rem;
 }
 
-.pr-10 {
-  padding-right: 2.5rem;
-}
-
 .pr-0 {
   padding-right: 0px;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .ps-4 {
@@ -1251,12 +1238,12 @@ video {
   font-weight: 500;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-normal {
   font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {
@@ -1279,12 +1266,13 @@ video {
   line-height: 1.625;
 }
 
-.leading-tight {
-  line-height: 1.25;
-}
-
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {
@@ -1337,13 +1325,14 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-blue-600 {
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity));
-}
-
 .opacity-0 {
   opacity: 0;
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-lg {
@@ -1355,12 +1344,6 @@ video {
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1378,6 +1361,14 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1392,14 +1383,6 @@ video {
 
 .transition-opacity {
   transition-property: opacity;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1424,214 +1407,6 @@ video {
   z-index: 1;
 }
 
-/* .logo a img{
-    height: 100% !important;
-} */
-
-/* 
-header{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #659DBD;
-}
-
-.back-home img{
-    width: 30px;
-    height: 30px;
-}
-
-.logo{
-    margin-right: 20px;
-}
-
-.logo img{
-    width: 50px;
-    height: auto;
-}
-
-.navigation{ 
-    display: flex;    
-    margin: 10px auto;
-}
-.navigation div{
-    margin-right: 20px;
-}
-.navigation a{
-    color: white;
-}
-
-.search{
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    border: 1px;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.search input{
-    outline: none;
-    padding: 5px;
-    flex:1;
-}
-.search img{
-    margin-left: 5px;
-}
-
-article{
-    margin: 10px;
-    padding: 10px;
-}
-
-.login {
-    margin-left: 20px;
-    text-decoration: none;
-    padding: 5px 10px;
-    background-color: #8D8741;
-    color: #000000;
-    border-radius: 5px;
-}
-
-
-.back-g{
-    position: relative;
-    background: rgba(255, 255, 255, 0.5) url('image/sports.jpg') center/cover;  
-}
-
-.image-container{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.image-container a{
-    color: #000000;
-}
-
-.image-container div{
-    margin-right: 10px;
-}
-
-.image-container img{
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 0px;
-}
-
-.image-container p{
-    text-align: center;
-    margin-top: 1px;
-}
-
-.keep-container img{
-    width: 100%;
-    height: auto;
-}
-
-.product-container1{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    margin: 10px;
-}
-
-.container1{
-    background-color: #daad86;
-    max-width: 50%;
-    height: auto;
-    display: flex;
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 10px;
-    box-sizing: border-box;
-}
-
-.container1 img{
-    width:200px;
-    height:200px;
-    border-radius: 8px;
-}
-
-.container2{
-    background-color: #FBEEC1;
-    max-width: 50%;
-    height: auto;
-    display: flex;
-    flex: 1;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin: 10px;
-    box-sizing: border-box;
-}
-
-.container2 img{
-    width:200px;
-    height:200px;
-    border-radius: 8px;
-}
-
-.text-button{
-    flex: 2;
-    padding-left: 10px;
-
-}
-
-.text-button a{
-    color: white;
-} */
-
-/* 
-.footer1{
-    background-color: #659DBD;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    padding: 10px;
-    margin: 0;
-}
-
-.footer1 p{
-    padding: 0px;
-    margin: 0;
-}
-
-.footer-icons img{
-    margin-top: 10px;
-    width: 40px;
-    margin: 20px;
-    margin-bottom: 1px;
-}
-
-.footer2{
-    background-color: #8D8741;
-    display: flex;
-    justify-content: space-between;
-    color: #000000;
-}
-
-.footer2 div{
-    margin: 20px;
-    margin-bottom: 1px;
-}
-
-.footer2 a{
-    color: black;
-} */
-
-/* .article-about{
-    background: url('image/banner/sports-about.jpg') ;
-    height: 800px;   
-}
-.article-about p{
-    margin: 30px;
-    margin-bottom: 1px;
-    padding-bottom: 1px;
-} */
-
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
@@ -1650,11 +1425,6 @@ article{
 .hover\:bg-indigo-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(79 70 229 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-blue-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-800:hover {
@@ -1904,16 +1674,16 @@ article{
     width: 66.666667%;
   }
 
-  .lg\:w-4\/5 {
-    width: 80%;
-  }
-
   .lg\:w-2\/6 {
     width: 33.333333%;
   }
 
   .lg\:w-3\/5 {
     width: 60%;
+  }
+
+  .lg\:w-4\/5 {
+    width: 80%;
   }
 
   .lg\:flex-wrap {
