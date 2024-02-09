@@ -14,7 +14,7 @@ Features
 
 In this section, list and describe the features or functionality that you are working on. You can use checkboxes to track the progress of each feature.
 
- Feature 1 (Yilin Lai): Customer sign up table
+ Feature 1 (Yilin Lai): Customer sign in / sign up
  Feature 2 (Hao Zhang): Product list table
  Feature 3 (Aijun Fan): Suggestion and feedback table
  Feature 4 (Zheng Tian): Shop infor table
@@ -24,13 +24,38 @@ In this section, list and describe the features or functionality that you are wo
 
 
 
+//feedback table
+CREATE TABLE `24_feedback` (
+  `id` int NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` bigint NOT NULL,
+  `message` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+*Create table for sign up / sign in page*
+
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    PasswordHash CHAR(60) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Mobile VARCHAR(15),
+    Status TINYINT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
 
 
 
 
 
 Feature 1
-Include more detailed information about Feature 1 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
+Sign in / Sign up
+
+User registration and login operations are all performed on this page. If it is a new user, go through the registration process and then log in; if it is a registered user, go through the login process directly.
 
 Feature 2
 Include more detailed information about Feature 2 here. Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
