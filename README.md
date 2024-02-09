@@ -34,45 +34,9 @@ Database Tables
 List the database tables that are part of your project.
 
 Table 1 (Created By YilinLai): Users
-*Create table for sign up / sign in page*
-CREATE TABLE Users (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50) NOT NULL UNIQUE,
-    PasswordHash CHAR(60) NOT NULL,
-    Email VARCHAR(100) NOT NULL UNIQUE,
-    Mobile VARCHAR(15),
-    Status TINYINT NOT NULL DEFAULT 1,
-    CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UpdatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-Table 2 (Created By HaoZhang): 
-Product list table:
-CREATE TABLE Products (
-    product_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    category VARCHAR(50),
-    price DECIMAL(10, 2) NOT NULL,
-    image VARCHAR(255),
-    info TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-ProductSizes list table:
-CREATE TABLE ProductSizes (
-    size_id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT NOT NULL,
-    size VARCHAR(10) NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
-);
+Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes
 Table 3 (Created By Aijun Fan): 24_feedback
 Include the ER Diagram of the database.
-//feedback table
-CREATE TABLE `24_feedback` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,, 
-  `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` bigint NOT NULL,
-  `message` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 Created Forms
 List and describe any forms that have been created as part of your project. Include details about the purpose of each form and any validation logic.
