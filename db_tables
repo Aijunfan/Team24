@@ -1,0 +1,37 @@
+*Create table for sign up / sign in page*
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    Username VARCHAR(50) NOT NULL UNIQUE,
+    PasswordHash CHAR(60) NOT NULL,
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Mobile VARCHAR(15),
+    Status TINYINT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(50),
+    price DECIMAL(10, 2) NOT NULL,
+    image VARCHAR(255),
+    info TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+ProductSizes list table:
+CREATE TABLE ProductSizes (
+    size_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    size VARCHAR(10) NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+);  
+
+CREATE TABLE `24_feedback` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` bigint NOT NULL,
+  `message` varchar(500) NOT NULL
+)
+

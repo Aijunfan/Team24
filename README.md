@@ -19,42 +19,8 @@ In this section, list and describe the features or functionality that you are wo
  Feature 3 (Aijun Fan): Suggestion and feedback table
  Feature 4 (Zheng Tian): Shop infor table
 
-
-
-
-
-
-//feedback table
-CREATE TABLE `24_feedback` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,, 
-  `name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone` bigint NOT NULL,
-  `message` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-*Create table for sign up / sign in page*
-
-CREATE TABLE Users (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50) NOT NULL UNIQUE,
-    PasswordHash CHAR(60) NOT NULL,
-    Email VARCHAR(100) NOT NULL UNIQUE,
-    Mobile VARCHAR(15),
-    Status TINYINT NOT NULL DEFAULT 1,
-    CreatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UpdatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-
-
-
-
-
-
 Feature 1
 Sign in / Sign up
-
 User registration and login operations are all performed on this page. If it is a new user, go through the registration process and then log in; if it is a registered user, go through the login process directly.
 
 Feature 2
@@ -67,27 +33,11 @@ Provide links to related code files (github) & link to the feature (shell.hamk.f
 Database Tables
 List the database tables that are part of your project.
 
-Table 1 (Created By): Table Name
-Table 2 (Created By HaoZhang): 
-Product list table:
-CREATE TABLE Products (
-    product_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    category VARCHAR(50),
-    price DECIMAL(10, 2) NOT NULL,
-    image VARCHAR(255),
-    info TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-ProductSizes list table:
-CREATE TABLE ProductSizes (
-    size_id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT NOT NULL,
-    size VARCHAR(10) NOT NULL,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
-);
-Table 3 (Created By): Table Name
+Table 1 (Created By YilinLai): Users
+Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes
+Table 3 (Created By Aijun Fan): 24_feedback
 Include the ER Diagram of the database.
+![image](https://github.com/Aijunfan/Team24/assets/127038124/3623197d-440b-4f74-8f28-e8900bf3eda7)
 
 Created Forms
 List and describe any forms that have been created as part of your project. Include details about the purpose of each form and any validation logic.
