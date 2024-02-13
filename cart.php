@@ -1,4 +1,4 @@
-<!-- cart.php -->
+<?php include 'init.php'; ?>
 <?php include 'header.php'; ?>
 <div class="container mx-auto mt-10 border-1 rounded">
     <div class="flex flex-col md:flex-row  my-10">
@@ -73,7 +73,7 @@
                         <span class="total_cost">$0</span>
                     </div>
                     <button
-                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded">Checkout</button>
+                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded" onclick="checkout()">Checkout</button>
                 </div>
             </div>
         </div>
@@ -81,6 +81,40 @@
     </div>
 </div>
 <?php include 'footer.php'; ?>
+<script src="https://js.stripe.com/v3/"></script>
 <script>
+    const stripe = Stripe("pk_test_51OijO1B5KNrksgu9geGURdZZWoDRNMxNOAjtPYpTQcaVQ1eDXlaQodzjJnHE9xXVoIGcDgZadk3JrQGI5LLvZyJl005NCNI1rh");
+    function checkout() {
+    const cartData = localStorage.getItem("cart");
+    fetch('checkout.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: cartData  // 直接使用从localStorage获取的购物车数据
+    })
+    .then(response => response.json())
+    .then(session => {
+        if(session.id) {
+            console.log('cartData',cartData)
+            console.log('session',session)
+            // 使用会话ID重定向到Stripe Checkout
+            stripe.redirectToCheckout({ sessionId: session.id })
+            .then(function (result) {
+                // 如果redirectToCheckout失败，可以在这里处理结果（例如，显示错误消息）
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
+        } else {
+            // 处理错误（例如显示错误消息）
+            console.error("Failed to create checkout session.", session.error ? session.error : 'Unknown error.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
     
 </script>

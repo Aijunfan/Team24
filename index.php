@@ -1,5 +1,6 @@
-<!-- index.php -->
-<?php include 'header.php'; ?>
+<?php
+ include 'init.php';
+ include 'header.php'; ?>
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap">
     <div class="flex w-full mb-20 flex-wrap">

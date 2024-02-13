@@ -34,7 +34,7 @@ Database Tables
 List the database tables that are part of your project.
 
 Table 1 (Created By YilinLai): Users
-Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes
+Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes 3.addresses 4.orders
 Table 3 (Created By Aijun Fan): 24_feedback
 Include the ER Diagram of the database.
 ![image](https://github.com/Aijunfan/Team24/assets/127038124/3623197d-440b-4f74-8f28-e8900bf3eda7)

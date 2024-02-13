@@ -1,4 +1,3 @@
-<!-- products.php -->
 <?php
 $currentScript = basename($_SERVER['PHP_SELF']);
 if ($currentScript != 'index.php') {

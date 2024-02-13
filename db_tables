@@ -35,3 +35,15 @@ CREATE TABLE `24_feedback` (
   `message` varchar(500) NOT NULL
 )
 
+CREATE TABLE addresses (
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    line1 VARCHAR(255) NOT NULL,
+    line2 VARCHAR(255),
+    city VARCHAR(255) NOT NULL,
+    state VARCHAR(255) NOT NULL,
+    zip VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    is_default BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (UserID) REFERENCES users(UserID)
+);

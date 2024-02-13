@@ -1,4 +1,5 @@
 <?php
+include 'init.php';
 require_once 'db_config.php'; // 引入数据库配置文件
 
 // 初始化变量

@@ -1,5 +1,5 @@
-    <div
-      class="bag hidden relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white opacity-0 transition-opacity duration-300 ease-in-out">
+<div
+      class="bag_div relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white opacity-0 transition-opacity duration-300 ease-in-out">
       <!-- Modal content -->
       <!-- Your modal content here -->
       <div class="flex justify-between items-center">
@@ -16,15 +16,17 @@
         </div>
       </div>
       <div class="flex justify-between items-center mt-4">
-      <a href="cart.php"><button class="px-4 py-2 bg-white text-sm font-medium rounded border border-gray-300 hover:bg-gray-50">View Bag
-          (7)</button></a>
-          <a href="cart.php"><button class="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-900">Checkout</button></a>
+        <a href="cart.php"><button
+            class="px-4 py-2 bg-white text-sm font-medium rounded border border-gray-300 hover:bg-gray-50">View Bag
+            (7)</button></a>
+        <a href="cart.php"><button
+            class="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-900">Checkout</button></a>
       </div>
 
       <p class="text
 -sm text-gray-500 mt-4">
-        Members get free shipping on orders $50+. <a href="join.php" class="text-indigo-600 hover:underline">Join Us</a> or
-        <a href="login.php" class="text-indigo-600 hover:underline">Sign-in</a>.
+        Members get free shipping on orders $50+. <a href="login.php" class="text-indigo-600 hover:underline" >Join Us</a> or
+        <a href="join.php" class="text-indigo-600 hover:underline">Sign-in</a>.
       </p>
 
       <!-- Close Button -->

@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!-- header.php -->
 <!DOCTYPE html>
 <html lang="en">
@@ -5,24 +10,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-store">
   <title>24-Sports</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha256-CSdW2DALEW1KHu1eq0RGssLxFH6SkcY4cF4jAOGb3A4=" crossorigin="anonymous"> -->
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="main.css?v1.121">
+  <script src="main.js?v12"></script>
+  
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <script src="main.js"></script>
 </head>
 
 <body class="relative">
   <header class="text-gray-600 body-font">
-    <div class="flex bg-gray-100 h-6 text-xs	items-center justify-end px-4">
-      <a href="join.php" class="hover:text-gray-900 px-4">Join Us</a>
-      <span >|</span>
-      <a href="login.php" class="hover:text-gray-900 px-4">Sign In</a>
-      <span >|</span>
-      <a href="index.php#feedback" class="hover:text-gray-900 px-4">Feedback</a>
-      
+  <div class="flex bg-gray-100 h-10 text-xs items-center justify-end px-4 font-medium">
+  <a href="index.php#feedback" class="hover:text-gray-900 px-4">Feedback</a>
+  <span>|</span>
+  
+  <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+        <div class="relative group">
+          <a href="user_center.php" class=" px-2 flex items-center justify-center">
+            <span class="mx-2 hover:text-gray-900">Hi, <?php echo strtoupper(htmlspecialchars($_SESSION["username"])); ?></span>
+          </a>
+          <div class="z-10 absolute hidden group-hover:block shadow-lg bg-white">
+            <div class="mt-2"> <!-- 应用间隙 -->
+              <a href="user_center.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+              <a href="orders.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Orders</a>
+              <a href="favourites.php" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Favourites</a>
+            </div>
+          </div>
+        </div>
+        <a href="user_center.php" class="flex justify-center items-center hover:bg-gray-200 rounded-full p-1 transition-all duration-150  mr-2">
+          <svg aria-hidden="true" class="pre-nav-design-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none" data-var="glyph" style="display: inline-block;"><path fill="currentColor" d="M12 3a4.5 4.5 0 00-4.5 4.5H9a3 3 0 013-3V3zM7.5 7.5A4.5 4.5 0 0012 12v-1.5a3 3 0 01-3-3H7.5zM12 12a4.5 4.5 0 004.5-4.5H15a3 3 0 01-3 3V12zm4.5-4.5A4.5 4.5 0 0012 3v1.5a3 3 0 013 3h1.5zM4.5 21v-3H3v3h1.5zm0-3a3 3 0 013-3v-1.5A4.5 4.5 0 003 18h1.5zm3-3h9v-1.5h-9V15zm9 0a3 3 0 013 3H21a4.5 4.5 0 00-4.5-4.5V15zm3 3v3H21v-3h-1.5z"></path></svg>
+        </a>
+        <span>|</span>
+        <a href="logout.php" class="hover:text-gray-900 px-4">Logout</a>
+      <?php else: ?>
+        <a href="join.php" class="hover:text-gray-900 px-4">Join Us</a>
+        <span>|</span>
+        <a href="login.php" class="hover:text-gray-900 px-4">Sign In</a>
+      <?php endif; ?>
     </div>
     <div class="container mx-auto flex flex-wrap p-4 flex-col md:flex-row items-center">
       <a class="" href="index.php">
@@ -79,43 +106,9 @@
   </header>
 
   <div id="myModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-    <div
-      class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white opacity-0 transition-opacity duration-300 ease-in-out">
-      <!-- Modal content -->
-      <!-- Your modal content here -->
-      <div class="flex justify-between items-center">
-        <h2 class="text-lg font-semibold text-gray-900 -mt-1">Added to Bag</h2>
-      </div>
-      <div class="flex justify-start items-center mt-4">
-        <img class="h-20 w-20 object-cover" src="./image/basketball/air-jordan-1-mid-shoes-MVp2kJ (2).png"
-          alt="Nike Dunk Low">
-        <div class="ml-4">
-          <p class="text-sm font-medium text-gray-900">Nike Dunk Low</p>
-          <p class="text-sm text-gray-700">Women's Shoes</p>
-          <p class="text-sm text-gray-700">Size W 6 / M 4.5</p>
-          <p class="text-sm font-semibold text-gray-900">$115</p>
-        </div>
-      </div>
-      <div class="flex justify-between items-center mt-4">
-      <a href="cart.php"><button class="px-4 py-2 bg-white text-sm font-medium rounded border border-gray-300 hover:bg-gray-50">View Bag
-          (7)</button></a>
-          <a href="cart.php"><button class="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-900">Checkout</button></a>
-      </div>
-
-      <p class="text
--sm text-gray-500 mt-4">
-        Members get free shipping on orders $50+. <a href="#" class="text-indigo-600 hover:underline">Join Us</a> or
-        <a href="#" class="text-indigo-600 hover:underline">Sign-in</a>.
-      </p>
-
-      <!-- Close Button -->
-      <button id="modalCloseBtn" class="absolute top-0 right-0 mt-2 mr-2">
-        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
+        <?php
+          include "bag.php";
+        ?>
   </div>
 
   <script>

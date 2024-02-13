@@ -1,5 +1,5 @@
-<!-- detail.php -->
 <?php
+include 'init.php';
 include 'header.php';
 require 'db_config.php'; // 确保已包含数据库配置文件
 
@@ -14,6 +14,18 @@ if (isset($_GET['id'])) {
 
     if ($result->num_rows > 0) {
         $product = $result->fetch_assoc();
+
+        // 查询该商品的所有尺寸
+        $sizeStmt = $conn->prepare("SELECT size FROM ProductSizes WHERE product_id = ?");
+        $sizeStmt->bind_param("i", $product_id);
+        $sizeStmt->execute();
+        $sizeResult = $sizeStmt->get_result();
+
+        $sizes = [];
+        while ($sizeRow = $sizeResult->fetch_assoc()) {
+            $sizes[] = $sizeRow['size'];
+        }
+        $sizeStmt->close();
         ?>
         <section class="text-gray-600 body-font overflow-hidden">
             <div class="container px-5 py-24 mx-auto">
@@ -21,7 +33,9 @@ if (isset($_GET['id'])) {
                     <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
                         src="<?php echo $product['image']; ?>">
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                        <h2 class="text-sm title-font text-gray-500 tracking-widest"><?php echo ucfirst($product["category"])?> Shoes</h2>
+                        <h2 class="text-sm title-font text-gray-500 tracking-widest">
+                            <?php echo ucfirst($product["category"]) ?> Shoes
+                        </h2>
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
                             <?php echo $product['name']; ?>
                         </h1>
@@ -84,7 +98,9 @@ if (isset($_GET['id'])) {
                                 </a>
                             </span>
                         </div>
-                        <p class="leading-relaxed"><?php echo $product['info']; ?></p>
+                        <p class="leading-relaxed">
+                            <?php echo $product['info']; ?>
+                        </p>
                         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                             <!-- <div class="flex">
                                 <span class="mr-3">Color</span>
@@ -98,16 +114,12 @@ if (isset($_GET['id'])) {
                                 <span class="mr-3">Size</span>
                                 <div class="relative">
                                     <select
-                                        class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                                        <?php
-                                        for ($i = 0; $i < count([41,42,43,44,45]); $i++) {
-                                            ?>
-                                            <option>
-                                                <?php echo [41,42,43,44,45][$i]; ?>
+                                        class="size_select rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                        <?php foreach ($sizes as $size): ?>
+                                            <option value="<?php echo htmlspecialchars($size); ?>">
+                                                <?php echo htmlspecialchars($size); ?>
                                             </option>
-                                            <?php
-                                        }
-                                        ?>
+                                        <?php endforeach; ?>
                                     </select>
                                     <span
                                         class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
@@ -120,8 +132,13 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                         <div class="flex">
-                            <span class="title-font font-medium text-2xl text-gray-900">$<?php echo $product['price']; ?></span>
-                            <button onclick="addToCart(<?php echo htmlspecialchars(json_encode($product)); ?>)" id="modalOpenBtn" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Bag</button>
+                            <span class="title-font font-medium text-2xl text-gray-900">$
+                                <?php echo $product['price']; ?>
+                            </span>
+                            <button onclick="addToCart(<?php echo htmlspecialchars(json_encode($product)); ?>)"
+                                id="modalOpenBtn"
+                                class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add
+                                to Bag</button>
                             <button
                                 class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -149,62 +166,95 @@ $stmt->close();
 $conn->close();
 ?>
 
-  <script>
+<script>
     // JavaScript to handle opening and closing of the modal
     const modal = document.getElementById('myModal');
     const modalContent = modal.querySelector('div');
 
     // document.getElementById('modalOpenBtn').addEventListener('click', function(event){
-    
+
     // });
 
-    document.getElementById('modalCloseBtn').addEventListener('click', function(){
-    modalContent.style.opacity = '0';
+    document.getElementById('modalCloseBtn').addEventListener('click', function () {
+        modalContent.style.opacity = '0';
         modal.classList.add('hidden');
         modalContent.classList.add('opacity-0');
     });
 
     // Adding an event listener to the whole document to close the modal if clicked outside of modalContent
-    document.addEventListener('click', function(event){
-    // Check if the modal is not hidden
-    if (!modal.classList.contains('hidden')) {
-        // Check if the click target is not inside modalContent and the click is not the modalOpenBtn
-        if (!modalContent.contains(event.target) && event.target.id !== 'modalOpenBtn') {
-        modalContent.style.opacity = '0';
-            modal.classList.add('hidden');
-            modalContent.classList.add('opacity-0');
+    document.addEventListener('click', function (event) {
+        // Check if the modal is not hidden
+        if (!modal.classList.contains('hidden')) {
+            // Check if the click target is not inside modalContent and the click is not the modalOpenBtn
+            if (!modalContent.contains(event.target) && event.target.id !== 'modalOpenBtn') {
+                modalContent.style.opacity = '0';
+                modal.classList.add('hidden');
+                modalContent.classList.add('opacity-0');
+            }
         }
-    }
     });
 
     function addToCart(product) {
+        const size = document.querySelector('.size_select').value
+        product.id = product.product_id + '_' + size
+        product.size = size
+        let cart = [];
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+        }
+
+        // 检查产品是否已经在购物车中
+        const existingProductIndex = cart.findIndex(item => item.id === product.id);
+        if (existingProductIndex !== -1) {
+            // 如果已经存在，则增加数量
+            if (cart[existingProductIndex].quantity >= 9) {
+                alert("You've reached the quantity limit for this item.")
+                return
+            } else {
+                cart[existingProductIndex].quantity += 1;
+            }
+
+        } else {
+            // 如果不存在，添加新产品到购物车
+            product.quantity = 1; // 设置初始数量
+            cart.push(product);
+        }
         modal.classList.remove('hidden');
         setTimeout(() => {
             modalContent.style.opacity = '1';
             modalContent.classList.remove('opacity-0');
         }, 10); // Start the opacity transition slightly after the modal is shown
         event.stopPropagation(); // 防止事件冒泡到document
-        let cart = [];
-        if (localStorage.getItem('cart')) {
-            cart = JSON.parse(localStorage.getItem('cart'));
-        }
-        
-        // 检查产品是否已经在购物车中
-        const existingProductIndex = cart.findIndex(item => item.product_id === product.product_id);
-        if (existingProductIndex !== -1) {
-            // 如果已经存在，则增加数量
-            cart[existingProductIndex].quantity += 1;
-        } else {
-            // 如果不存在，添加新产品到购物车
-            product.quantity = 1; // 设置初始数量
-            cart.push(product);
-        }
+        let product_count = 0
+        cart.forEach((item)=>{
+            product_count+= item.quantity
+        })
+        document.querySelector('.bag_div').innerHTML = `<div class="flex justify-between items-center">
+            <h2 class="text-lg font-semibold text-gray-900 -mt-1">Added to Bag</h2>
+        </div>
+        <div class="flex justify-start items-center mt-4">
+            <img class="h-20 w-20 object-cover" src="${product.image}"
+            alt="Nike Dunk Low">
+            <div class="ml-4">
+            <p class="text-sm font-medium text-gray-900">${product.name}</p>
+            <p class="text-sm text-gray-700">${product.category}</p>
+            <p class="text-sm text-gray-700">Size ${size}</p>
+            <p class="text-sm font-semibold text-gray-900">$${product.price}</p>
+            </div>
+        </div>
+        <div class="flex justify-between items-center mt-4">
+            <a href="cart.php"><button
+                class="px-4 py-2 bg-white text-sm font-medium rounded border border-gray-300 hover:bg-gray-50">View Bag
+                (${product_count})</button></a>
+            <a href="cart.php"><button
+                class="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-900">Checkout</button></a>
+        </div>`
 
         localStorage.setItem('cart', JSON.stringify(cart));
         const shit = JSON.parse(localStorage.getItem('cart'));
         console.log(shit);
         // 调用函数以更新数量
-            updateCartQuantity();
+        updateCartQuantity();
     }
 
 </script>

@@ -1,25 +1,31 @@
-function uploadProducts() {
-    const input = document.getElementById('productsFile');
+function uploadProducts(id) {
+    const input = document.getElementById(id);
     if (!input.files[0]) {
         alert('请先选择一个文件。');
         return;
     }
     const file = input.files[0];
     const formData = new FormData();
-    formData.append('productsFile', file);
-    console.log(formData.get('productsFile'));
+    formData.append(id, file);
+    console.log('formData', formData);
     fetch('upload_products.php', {
         method: 'POST',
         body: formData
     })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    .then(response => {
+        console.log(response.headers.get("Content-Type")); // 检查Content-Type是否正确
+        return response.json(); // 应该不会抛出错误，因为响应是有效的JSON
+    })
+    .then(data => {
+        console.log(data); // 确认解析后的数据
+        alert(data.message);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("发生错误：" + error.toString());
+    });
 }
+
 
 // 示例函数：计算购物车中所有物品的总数量并更新页面
 function updateCartQuantity() {
@@ -63,13 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
             productElement.price = item.price
             // 构建商品基础信息
             const productInfoHTML = `
-            <div class="flex w-full md:w-2/5"> <!-- product -->
+            <div class="flex w-full md:w-2/5" > <!-- product -->
             <div class="w-32"> <!-- Adjusted width for larger image -->
             <img class="h-32" src="${item.image}" alt="product image"> <!-- Adjusted height for larger image -->
             </div>
             <div class="flex flex-col justify-between ml-4 flex-grow">
             <span class="font-bold text-sm">${item.name}</span>
-            <span class="text-red-500 text-xs">Option | Size</span>
+            <span class="text-red-500 text-xs">Size ${item.size}</span>
             <span class="text-green-500 text-xs">In stock</span>
             </div>
             </div>
@@ -82,6 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
             // 将基础信息添加到productElement
             productElement.innerHTML = productInfoHTML;
+            productElement['size'] = item.size;
+            productElement['productid'] = item.id;
+
 
             // 创建<select>元素
             const quantitySelect = document.createElement('select');
@@ -119,12 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const product_id = parentItem.value
                 // 2. 查找并删除特定项
-                const updatedCartData = cartData.filter(item => item.product_id !== product_id);
+                console.log(parentItem);
+                // return 
+                
+                const updatedCartData = cartData.filter(item => !(item.product_id == product_id && item.size == parentItem.size));
 
+                // const updatedCartData = cartData.filter(item => item.product_id !== product_id);
                 // 3. 更新localStorage
                 localStorage.setItem("cart", JSON.stringify(updatedCartData));
-                
                 // 执行删除操作，例如移除点击按钮所在的列表项
+                console.log("cartContainer",cartContainer);
                 cartContainer.children[index].remove();
                 if(cartData.length==1){
                     // setTimeout(() => {
@@ -142,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // 可以在这里添加其他删除逻辑，如更新数据存储或通知服务器
                 updatePrices();
+                updateCartQuantity()
                 
             }
         });
@@ -158,10 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const product_id = productElement.value
             const product_price = productElement.price
             // const found = cartData.find(item => item.product_id === product_id);
-            let item = cartData.find(item => item.product_id === product_id);
+            let item = cartData.find(item => item.product_id === product_id&& item.size == productElement.size);
+            // const updatedCartData = cartData.filter(item => !(item.product_id == product_id && item.size == parentItem.size));
+
             if (item) {
                 item.quantity = quantity; // 修改quantity为5
             }
+            
             // 步骤4: 更新localStorage中的数据
             localStorage.setItem("cart", JSON.stringify(cartData));
             const totalPrice = quantity * product_price;
@@ -183,20 +200,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初始化和监听选择框的变化
     document.querySelectorAll('#cartContainer select, .shipping').forEach((selectElement) => {
-        selectElement.addEventListener('change', updatePrices);
+        selectElement.addEventListener('change', ()=>{
+            updatePrices()
+            updateCartQuantity()
+        });
     });
 
     // 初始化价格
     updatePrices();
 });
-
-
-
-
-
-
-
-
-
-
-

@@ -1,10 +1,5 @@
 <?php
-ob_start();
-// 开始或继续会话
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
+session_start(); // 确保这行在最顶部，且在任何输出之前
 // 引入数据库配置文件
 require_once 'db_config.php';
 
@@ -52,8 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->bind_result($id, $username, $hashed_password);
                     if ($stmt->fetch()) {
                         if (password_verify($password, $hashed_password)) {
-                            // 密码正确，开始新的会话
-                            session_start();
 
                             // 存储数据在会话变量中
                             $_SESSION["loggedin"] = true;
@@ -83,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 关闭连接
     $conn->close();
 }
-ob_end_flush();
 ?>
 
 <?php include 'header.php'; ?>
