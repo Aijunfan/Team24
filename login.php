@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             // 存储数据在会话变量中
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
+                            $_SESSION["user_id"] = $id;
                             $_SESSION["username"] = $username;
 
                             // 重定向用户到欢迎页面
