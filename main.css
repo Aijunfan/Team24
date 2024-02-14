@@ -830,10 +830,6 @@ video {
   margin-inline-end: 0.5rem;
 }
 
-.me-3 {
-  margin-inline-end: 0.75rem;
-}
-
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -1047,6 +1043,14 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.max-h-24 {
+  max-height: 6rem;
+}
+
+.max-h-\[600px\] {
+  max-height: 600px;
 }
 
 .min-h-64 {
@@ -2736,6 +2740,10 @@ video {
   line-height: 2rem;
 }
 
+.leading-normal {
+  line-height: 1.5;
+}
+
 .leading-relaxed {
   line-height: 1.625;
 }
@@ -3279,6 +3287,10 @@ video {
 
 .hover\:font-bold:hover {
   font-weight: 700;
+}
+
+.hover\:font-medium:hover {
+  font-weight: 500;
 }
 
 .hover\:text-gray-600:hover {

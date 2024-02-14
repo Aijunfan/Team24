@@ -1,5 +1,31 @@
-<?php include 'init.php'; ?>
-<?php include 'header.php'; ?>
+<?php
+ ob_start(); // Start buffering output
+ include 'init.php';
+ include 'header.php'; 
+
+require 'db_config.php'; // 引入数据库配置文件
+// 检查用户是否登录
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+$userId = $_SESSION['user_id'];
+// 查询用户地址信息
+$addressSql = "SELECT * FROM addresses WHERE UserID = ? ORDER BY is_default DESC, address_id ASC";
+$addressStmt = $conn->prepare($addressSql);
+$addressStmt->bind_param("i", $userId);
+$addressStmt->execute();
+$addressResult = $addressStmt->get_result();
+
+// 创建一个数组来存储所有地址
+$addresses = [];
+// 使用循环来获取所有行
+while($row = $addressResult->fetch_assoc()) {
+    $addresses[] = $row;
+}
+// 关闭语句
+$addressStmt->close();
+?>
 <div class="container mx-auto mt-10 border-1 rounded">
     <div class="flex flex-col md:flex-row  my-10">
         <div class="md:w-3/4 bg-white px-5 py-10">
@@ -67,6 +93,21 @@
                         <option value="10">Fast shipping - $10.00</option>
                     </select>
                 </div>
+                <div class="mt-4">
+                    <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping address</label>
+                    <select class="shipping-address block p-2 text-gray-600 w-full text-sm">
+                        <?php foreach ($addresses as $address): ?>
+                            <option value="<?php echo $address['address_id']; ?>">
+                                <?php
+                                echo htmlspecialchars($address['first_name'] . ' ' . $address['last_name'] . ', ' . $address['line1'] . ', ' . $address['line2'] . ', ' . $address['city'] . ', ' . $address['province'] . ', ' . $address['country'] . ' - ' . $address['phone_number']);
+                                if ($address['is_default']) {
+                                    echo " (Default)";
+                                }
+                                ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
                 <div class="border-t mt-8">
                     <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total cost</span>
@@ -80,19 +121,38 @@
 
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php include 'footer.php'; 
+ob_end_flush(); // Send output buffer and turn off buffering
+?>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     const stripe = Stripe("pk_test_51OijO1B5KNrksgu9geGURdZZWoDRNMxNOAjtPYpTQcaVQ1eDXlaQodzjJnHE9xXVoIGcDgZadk3JrQGI5LLvZyJl005NCNI1rh");
     function checkout() {
-    document.querySelector("#overlay").classList.remove("hidden")
     const cartData = localStorage.getItem("cart");
+    let address = getAddress()
+    if(!address){
+        alert("Please select a shipping address.");
+        window.location.href="./user_center.php"
+        return
+    }
+    let cartItems = JSON.parse(cartData) || [];
+    if (!cartItems.length) {
+        alert("You have nothing in your bag!")
+        return
+    }
+    // 构建提交的数据，包括购物车数据和地址ID
+    let dataToSubmit = JSON.stringify({
+        cartItems: cartItems,
+        address: address // 添加地址ID
+    });
+    document.querySelector("#overlay").classList.remove("hidden")
+    
     fetch('checkout.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: cartData  // 直接使用从localStorage获取的购物车数据
+        body: dataToSubmit   // 直接使用从localStorage获取的购物车数据
     })
     .then(response => response.json())
     .then(session => {
@@ -115,6 +175,14 @@
     .catch(error => {
         console.error('Error:', error);
     });
+}
+
+function getAddress(){
+    let address = document.querySelector('.shipping-address').innerText
+    if (!address) {
+        return false
+    }
+    return address
 }
 
     

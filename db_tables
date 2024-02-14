@@ -38,12 +38,15 @@ CREATE TABLE `24_feedback` (
 CREATE TABLE addresses (
     address_id INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
     line1 VARCHAR(255) NOT NULL,
     line2 VARCHAR(255),
+    postcode VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
-    state VARCHAR(255) NOT NULL,
-    zip VARCHAR(255) NOT NULL,
+    province VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL,
     is_default BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (UserID) REFERENCES users(UserID)
 );
@@ -53,6 +56,8 @@ CREATE TABLE orders (
     UserID INT NOT NULL,
     total_price DECIMAL(10, 2) NOT NULL,
     status VARCHAR(255) NOT NULL,
+    shipping_address VARCHAR(255) NOT NULL, 
+    session_id VARCHAR(255) NOT NULL, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
@@ -64,6 +69,7 @@ CREATE TABLE order_items (
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     size VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),

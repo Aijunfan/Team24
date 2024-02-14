@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
                 if ($updateStmt->execute()) {
                     // 密码更新成功，重定向或显示成功消息
+                    $_SESSION["success_message"] = "The password was updated successfully!";
                     header("location: user_center.php?password=changed");
                 } else {
                     echo "Something went wrong. Please try again later.";

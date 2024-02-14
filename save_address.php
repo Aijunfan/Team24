@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $resetStmt->close();
         } else {
             // 处理SQL错误
-            echo "出错了，请再试一次。";
+            echo "Something went wrong. Please try again.";
             exit;
         }
     }
@@ -47,11 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sssssssssiii", $first_name, $last_name, $line1, $line2, $postcode, $city, $province, $country, $phone_number, $is_default, $address_id, $user_id);
             
             if ($stmt->execute()) {
-                $_SESSION["success_message"] = "地址更新成功！";
+                $_SESSION["success_message"] = "The address was updated successfully!";
                 header("location: user_center.php?address_update=success");
             } else {
-                $_SESSION["error_message"] = "出错了，请再试一次。";
-                echo "出错了，请再试一次。";
+                $_SESSION["error_message"] = "Something went wrong. Please try again.";
+                echo "Something went wrong. Please try again.";
             }
             
             $stmt->close();
@@ -73,16 +73,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("location: user_center.php?address_update=success");
             } else {
                 // 失败时
-                $_SESSION["error_message"] = "出错了，请再试一次。";
-                echo "出错了，请再试一次。";
+                $_SESSION["error_message"] = "Something went wrong. Please try again.";
+                echo "Something went wrong. Please try again.";
             }
 
             // 关闭语句
             $stmt->close();
         } else {
             // 失败时
-            $_SESSION["error_message"] = "出错了，请再试一次。";
-            echo "出错了，请再试一次。";
+            $_SESSION["error_message"] = "Something went wrong. Please try again.";
+            echo "Something went wrong. Please try again.";
         }
     }
     // 关闭数据库连接

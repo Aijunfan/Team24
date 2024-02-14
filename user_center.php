@@ -78,7 +78,7 @@ $addressStmt->close();
 
             <div id="Profile"
                 class=" tab-content p-6  text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Profile Tab</h3>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Profile</h3>
                 <form action="update_user_info.php" method="post" class="profile ">
                     <div class="mb-6">
                         <label for="Username"
@@ -128,6 +128,7 @@ $addressStmt->close();
                             <p>Delivery Address</p>
                             <a href="#" data-modal-target="address-modal" data-modal-toggle="edit-address-modal" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-4">Edit</a>
                         </div>
+                        <input class="address_id" type="hidden" name="address_id" value="<?php echo isset($address) ? $address['address_id'] : ''; ?>">
                         <p><span class="first_name"><?php echo htmlspecialchars($address['first_name'])?></span>,<span class="last_name"><?php echo htmlspecialchars($address['last_name'])?></span></p>
                         <p><span class="line1"><?php echo htmlspecialchars($address['line1']); ?></span>, <span class="line2"><?php echo htmlspecialchars($address['line2']); ?></span></p>
                         <p class="postcode"><?php echo htmlspecialchars($address['postcode']); ?></p>
@@ -138,6 +139,7 @@ $addressStmt->close();
                     </div>
                 <?php endforeach; ?>
                 <?php 
+                        
                         if (count($addresses) < 3) {
                             echo '<div class="flex justify-end mt-6">
                                     <button type="button" data-modal-target="address-modal" data-modal-toggle="new-address-modal" class="rounded-full text-white bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto p-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">
@@ -145,6 +147,7 @@ $addressStmt->close();
                                     </button>
                                 </div>';
                         }
+                        
                 ?>
             </div>
 
@@ -175,8 +178,8 @@ $addressStmt->close();
                 <span class="sr-only">Close modal</span>
             </button>
         </div>
-        <form action="save_address.php" method="post">
-            <input class="address_id" type="hidden" name="address_id" value="<?php echo isset($address) ? $address['address_id'] : ''; ?>">
+        <form class="address-form" action="save_address.php" method="post">
+            <input class="address_id" type="hidden" name="address_id" value="">
             <div class="grid gap-6 mb-2 md:grid-cols-2">
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
@@ -255,9 +258,15 @@ $addressStmt->close();
                 </div>
                 <label for="is_default" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Set as default delivery address.</label>
             </div>
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                Save
-            </button>
+            <div class="flex items-center justify-end">
+                <button type="submit" class="mr-2 leading-normal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Save
+                </button>
+                <button type="button" class="delete-btn leading-normal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Delete
+                </button>
+            </div>
+            
         </form>
     </div>
 
@@ -280,7 +289,7 @@ $addressStmt->close();
         </div>
         <!-- Modal body -->
         <div class="p-4 md:p-5">
-            <form class="space-y-4" action="change_password.php" method="post">
+            <form class="space-y-4 password-form" action="change_password.php" method="post">
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current
                         password</label>
@@ -310,7 +319,71 @@ $addressStmt->close();
 </div>
 <?php include 'footer.php'; ?>
 <script>
+    function change_password (){
+        // 获取表单元素
+        var form = document.querySelector(".password-form");
+
+        // 绑定submit事件
+        form.addEventListener("submit", function(event) {
+            // 阻止表单的默认提交行为
+            event.preventDefault();
+            toggleOverlay()
+            // 获取表单数据
+            var currentPassword = document.getElementById("current_password").value;
+            var newPassword = document.getElementById("new_password").value;
+            var confirmNewPassword = document.getElementById("confirm_new_password").value;
+
+            // 进行密码验证
+            if (newPassword.length < 8) {
+                alert("新密码长度至少需要8个字符。");
+                return false; // 阻止表单提交
+            }
+
+            if (newPassword !== confirmNewPassword) {
+                alert("新密码与确认密码不匹配。");
+                return false; // 阻止表单提交
+            }
+
+            // 如果所有验证通过，则继续表单提交
+            form.submit();
+    });
+    }
+    function delete_address(){
+        const deleteBtn = document.querySelector('.delete-btn');
+        if(deleteBtn) {
+            deleteBtn.addEventListener('click', function() {
+                const addressId = document.querySelector('.address_id').value;
+                if(confirm('Are you sure you want to delete this address?')) {
+                    fetch('delete_address.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: 'address_id=' + addressId
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.success) {
+                            // 处理成功，例如重定向或刷新页面
+                            window.location.reload();
+                        } else {
+                            // 显示错误消息
+                            alert('Error: ' + data.error);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
+            });
+        }
+    }
+    document.addEventListener('readystatechange', function() {
+        if (document.readyState === 'complete') {
+            document.querySelector('[data-target="Address"]').click()
+        }
+    });
     document.addEventListener('DOMContentLoaded', function () {
+        change_password()
+        delete_address()
         // 你的代码放在这里
         lastModal = ""
         document.addEventListener('click', function (e) {
@@ -327,13 +400,15 @@ $addressStmt->close();
             }
             lastModal = e.target.getAttribute('data-modal-target') ? e.target.getAttribute('data-modal-target') : lastModal
             // 如果点击了toggle按钮
-            console.log('e.target',e.target);
             if (e.target.matches('[data-modal-toggle]')) {
                 // console.log('data-modal-toggle',e.target.getAttribute('data-modal-toggle'));
                 if(e.target.getAttribute('data-modal-toggle')== 'edit-address-modal'){
                     document.querySelector('#modal-address-title').innerHTML = "Edit Address"
                     set_address_info(e.target.closest('.address-item'))
+                    const value = e.target.parentElement.parentElement.querySelector('.address_id').value
+                    document.querySelector('.address-form').querySelector('.address_id').value = value
                 }else if(e.target.getAttribute('data-modal-toggle')== 'new-address-modal'){
+                    set_address_info(false)
                     document.querySelector('#modal-address-title').innerHTML = "Add new Address"
                     document.querySelector('.address_id').value = "addNew"
                 }
@@ -350,17 +425,16 @@ $addressStmt->close();
             }
         });
         function set_address_info (el){
-            console.log('el',el.querySelector('#first_name'));
-            document.getElementById('first_name').value = el.querySelector('.first_name').innerText
-            document.getElementById('last_name').value = el.querySelector('.last_name').innerText
-            document.getElementById('line1').value = el.querySelector('.line1').innerText
-            document.getElementById('line2').value = el.querySelector('.line2').innerText
-            document.getElementById('postcode').value = el.querySelector('.postcode').innerText
-            document.getElementById('city').value = el.querySelector('.city').innerText
-            document.getElementById('province').value = el.querySelector('.province').innerText
-            document.getElementById('country').value = el.querySelector('.country').innerText
-            document.getElementById('phone_number').value = el.querySelector('.phone_number').innerText
-            document.getElementById('is_default').checked = el.querySelector('.is_default').innerText == 'Default Address' ? true : false
+            document.getElementById('first_name').value = el?el.querySelector('.first_name').innerText:''
+            document.getElementById('last_name').value = el?el.querySelector('.last_name').innerText:''
+            document.getElementById('line1').value = el?el.querySelector('.line1').innerText:''
+            document.getElementById('line2').value = el?el.querySelector('.line2').innerText:''
+            document.getElementById('postcode').value = el?el.querySelector('.postcode').innerText:''
+            document.getElementById('city').value = el?el.querySelector('.city').innerText:''
+            document.getElementById('province').value = el?el.querySelector('.province').innerText:''
+            document.getElementById('country').value = el?el.querySelector('.country').innerText:''
+            document.getElementById('phone_number').value = el?el.querySelector('.phone_number').innerText:''
+            document.getElementById('is_default').checked = el && el.querySelector('.is_default').innerText == 'Default Address' ? true : false
         }
 
         const tabs = document.querySelectorAll('ul[role="tablist"] a');
