@@ -85,6 +85,7 @@
 <script>
     const stripe = Stripe("pk_test_51OijO1B5KNrksgu9geGURdZZWoDRNMxNOAjtPYpTQcaVQ1eDXlaQodzjJnHE9xXVoIGcDgZadk3JrQGI5LLvZyJl005NCNI1rh");
     function checkout() {
+    document.querySelector("#overlay").classList.remove("hidden")
     const cartData = localStorage.getItem("cart");
     fetch('checkout.php', {
         method: 'POST',

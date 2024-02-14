@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/secrets.php'; // 确保这里正确引用了包含您Stripe Secret Key的文件
 
-\Stripe\Stripe::setApiKey('sk_test_51OijO1B5KNrksgu9EYiE46NgLQlBAdw1axDlNrzd08sQUWPZzTrxGzrwgFd94VCNnEA5i0wKCmd1HrEVLIIoYgAM00yemogmtZ');
+\Stripe\Stripe::setApiKey($stripeSecretKey);
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');

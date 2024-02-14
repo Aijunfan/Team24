@@ -18,18 +18,20 @@ require_once __DIR__ . '/../vendor/autoload.php';
   document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const sessionId = urlParams.get('session_id');
-
+    toggleOverlay()
     if (sessionId) {
       fetch(`/Team24/verify-payment.php?session_id=${sessionId}`)
         .then(response => response.json())
         .then(data => {
           const title = document.getElementById('orderStatusTitle');
           const message = document.getElementById('orderStatusMessage');
-          console.log(data);
           if (data.paymentStatus === "paid") {
             title.textContent = 'Order Confirmed!';
             message.textContent = 'Thank you for your purchase. Your order has been confirmed. If you have any questions, please email orders@24-sports.com.';
             message.innerHTML += '<br><a href="mailto:orders@24-sports.com" class="text-indigo-500">orders@24-sports.com</a>';
+            localStorage.setItem('cart','[]')
+            updateCartQuantity()
+            toggleOverlay()
           } else {
             title.textContent = 'Order Not Confirmed';
             message.textContent = 'There was an issue confirming your order. Please contact us for assistance.';

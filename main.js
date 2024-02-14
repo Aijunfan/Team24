@@ -26,7 +26,9 @@ function uploadProducts(id) {
     });
 }
 
-
+function toggleOverlay(){
+    document.querySelector("#overlay").classList.toggle("hidden")
+}
 // 示例函数：计算购物车中所有物品的总数量并更新页面
 function updateCartQuantity() {
     // 从localStorage读取购物车数据
