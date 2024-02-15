@@ -1,0 +1,5 @@
+# enable directory browsing
+Options All +Indexes
+php_value extension curl.so
+ErrorDocument 404 /Team24/404.php
+
