@@ -8,9 +8,6 @@ Due to the access to Stripe payment system, many parts of our project depend on 
 ## Table of Contents
 - [Features](#features)
 - [Database Tables](#database-tables)
-- [Created Forms](#created-forms)
-- [Created Tables](#created-tables)
-
 ## Features
 Our project has developed a range of features to enhance user experience and provide robust functionality:
 
