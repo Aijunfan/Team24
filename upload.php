@@ -1,6 +1,13 @@
 <?php
+ob_start(); // Start buffering output
 include 'init.php';
 include 'header.php';
+if (!isset($_SESSION['loggedin']) || $_SESSION['username'] !== 'admin') {
+    // 用户未登录或不是admin角色
+    // 重定向到登录页面或显示错误消息
+    header('Location: index.php');
+    exit; // 防止脚本继续执行
+}
 ?>
 <section class="text-gray-600 body-font overflow-hidden">
     <div class="container px-5 py-10 mx-auto">
@@ -116,4 +123,6 @@ include 'header.php';
 </script>
 
 
-<?php include 'footer.php'; ?>
+<?php include 'footer.php'; 
+ob_end_flush(); // Send output buffer and turn off buffering
+?>

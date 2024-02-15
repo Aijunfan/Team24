@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if($stmt->execute()){
                 // 可以在这里重定向用户回到个人中心或显示一个成功消息
                 // 成功时
-                $_SESSION["success_message"] = "地址添加成功！";
+                $_SESSION["success_message"] = "Address added successfully!";
                 header("location: user_center.php?address_update=success");
             } else {
                 // 失败时

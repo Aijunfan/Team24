@@ -22,6 +22,7 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 
 <body class="relative">
+  
   <header class="text-gray-600 body-font">
   <div class="flex bg-gray-100 h-10 text-xs items-center justify-end px-4 font-medium">
   <a href="index.php#feedback" class="hover:text-gray-900 px-4">Feedback</a>

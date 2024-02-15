@@ -23,6 +23,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssi", $newEmail, $newPhone, $userId);
 if ($stmt->execute()) {
     // 可以在这里重定向用户回到个人中心或显示一个成功消息
+    $_SESSION["success_message"] = "The userinfo was updated successfully!";
     header("location: user_center.php?update=success");
 } else {
     echo "Error updating record: " . $conn->error;

@@ -19,8 +19,10 @@ if($address_id) {
     if($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("ii", $address_id, $_SESSION['user_id']);
         if($stmt->execute()) {
+            $_SESSION["success_message"] = "The address has been deleted!";
             echo json_encode(['success' => true]);
         } else {
+            $_SESSION["error_message"] = "Failed to delete address";
             echo json_encode(['error' => 'Failed to delete address']);
         }
         $stmt->close();

@@ -335,12 +335,12 @@ $addressStmt->close();
 
             // 进行密码验证
             if (newPassword.length < 8) {
-                alert("新密码长度至少需要8个字符。");
+                alert("The new password length needs to be at least 8 characters.");
                 return false; // 阻止表单提交
             }
 
             if (newPassword !== confirmNewPassword) {
-                alert("新密码与确认密码不匹配。");
+                alert("The new password does not match the confirmation password.");
                 return false; // 阻止表单提交
             }
 
@@ -376,11 +376,11 @@ $addressStmt->close();
             });
         }
     }
-    document.addEventListener('readystatechange', function() {
-        if (document.readyState === 'complete') {
-            document.querySelector('[data-target="Address"]').click()
-        }
-    });
+    // document.addEventListener('readystatechange', function() {
+    //     if (document.readyState === 'complete') {
+    //         document.querySelector('[data-target="Address"]').click()
+    //     }
+    // });
     document.addEventListener('DOMContentLoaded', function () {
         change_password()
         delete_address()
@@ -444,7 +444,7 @@ $addressStmt->close();
             tab.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = this.getAttribute('data-target');
-
+                
                 // 隐藏所有tab内容区域
                 tabContentBoxes.forEach(box => {
                     box.classList.add('hidden');
