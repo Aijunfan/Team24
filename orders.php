@@ -41,7 +41,20 @@ if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
     while ($item = $itemsResult->fetch_assoc()) {
         $orderItems[] = $item;
     }
+    // 初始化物品总价格为0  
+    $totalItemsPrice = 0;
+    $shippingFee = 0;
+    if (!empty($orderDetail)) {
+         // 遍历所有订单项以累加价格
+        foreach ($orderItems as $item) {
+            $totalItemsPrice += $item['price'] * $item['quantity']; // 假设$item['price']是单价，$item['quantity']是数量
+            $shippingFee = $orderDetail['total_price'] - $totalItemsPrice;
 
+        }
+    }
+   
+
+    // 计算运费：订单总价减去所有物品的总价
     $itemsStmt->close();
     $orderStmt->close();
 }
@@ -80,7 +93,9 @@ $conn->close();
                                     </p>
                                     <p class="text-xs text-right text-gray-500">
                                         Status:
-                                        <?php echo $order['status']; ?>
+                                        <span class="<?php echo $order['status'] == 'cancel' ? 'text-red-500' : 'text-green-500'; ?>">
+                                            <?php echo $order['status']; ?>
+                                        </span>
                                     </p>
                                 </div>
                             </div>
@@ -130,6 +145,14 @@ $conn->close();
                                 <?php endforeach; ?>
                             </dd>
                         </div>
+                        <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-t">
+                            <dt class="text-sm font-medium text-gray-900">
+                                Shipping Fee
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                $ <?php echo htmlspecialchars($shippingFee); ?>
+                            </dd>
+                        </div> 
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-t">
                             <dt class="text-sm font-medium text-gray-500">
                                 Total Price

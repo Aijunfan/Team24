@@ -46,7 +46,7 @@ $addressStmt->close();
 ?>
 
     <div class="container flex">
-        <div class="flex w-1/2">
+        <div class="flex md:w-1/2 w-full flex-col md:flex-row">
             <ul role="tablist"
                 class="flex-column space-y space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
                 <li>
@@ -163,7 +163,7 @@ $addressStmt->close();
     class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
     <!-- Modal content -->
     <div id="address-modal"
-        class="modal-content relative top-20 mx-auto p-6 border w-[32rem] shadow-lg rounded-md bg-white transition-opacity duration-300 ease-in-out hidden">
+        class="modal-content relative top-20 mx-auto p-6 border md:w-[32rem] shadow-lg rounded-md bg-white transition-opacity duration-300 ease-in-out hidden">
         <!-- Modal header -->
         <div class="mb-4 flex items-center justify-between pb-2 border-b rounded-t dark:border-gray-600">
             <h3 id="modal-address-title" class="text-xl font-semibold text-gray-900 dark:text-white">Edit Address</h3>

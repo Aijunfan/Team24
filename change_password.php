@@ -45,17 +45,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["success_message"] = "The password was updated successfully!";
                     header("location: user_center.php?password=changed");
                 } else {
-                    echo "Something went wrong. Please try again later.";
+                    $_SESSION["error_message"] = "Something went wrong. Please try again later.";
+                    header("location: user_center.php");
                 }
                 $updateStmt->close();
             } else {
-                echo "New password and confirm new password do not match.";
+                $_SESSION["error_message"] = "New password and confirm new password do not match.";
+                header("location: user_center.php");
             }
         } else {
-            echo "The current password is not correct.";
+            $_SESSION["error_message"] = "The current password is not correct.";
+            header("location: user_center.php");
         }
     } else {
-        echo "An error occurred. Please try again later.";
+        $_SESSION["error_message"] = "An error occurred. Please try again later.";
+        header("location: user_center.php");
     }
     $stmt->close();
 }

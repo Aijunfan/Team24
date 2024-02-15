@@ -29,6 +29,7 @@ if (!$requestData || !isset($requestData['cartItems'])) {
 
 $cartItems = $requestData['cartItems'];
 $address = $requestData['address']; // 从请求中获取地址文本内容
+$shippingOptions = $requestData['shippingOptions']; // 从请求中获取地址文本内容
 
 // 构建line_items数组
 $line_items = array_map(function ($item) {
@@ -47,17 +48,20 @@ try {
         'payment_method_types' => ['card'],
         'line_items' => $line_items,
         'mode' => 'payment',
+        'shipping_options' => $shippingOptions,
         'success_url' => $YOUR_DOMAIN . '/success.php?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url' => $YOUR_DOMAIN . '/cart.php',
+        'cancel_url' => $YOUR_DOMAIN . '/cart.php?session_id={CHECKOUT_SESSION_ID}',
     ]);
     $sessionId = $checkout_session->id; // 获取会话ID
     // 计算总价
     $totalPrice = array_reduce($cartItems, function ($carry, $item) {
         return $carry + ($item['price'] * $item['quantity']);
     }, 0);
+    $amount = $shippingOptions[0]['shipping_rate_data']['fixed_amount']['amount'];
 
+    $totalPrice += $amount/100;
     // 创建订单
-    $orderSql = "INSERT INTO orders (UserID, total_price, status, shipping_address,session_id, created_at, updated_at) VALUES (?, ?, 'pending', ?, ?, NOW(), NOW())";
+    $orderSql = "INSERT INTO orders (UserID, total_price, status, shipping_address,session_id, created_at, updated_at) VALUES (?, ?, 'cancel', ?, ?, NOW(), NOW())";
     $stmt = $conn->prepare($orderSql);
     $stmt->bind_param("idss", $userId, $totalPrice, $address, $sessionId);
 

@@ -15,10 +15,11 @@ error_reporting(E_ALL);
 
 // 引入数据库配置和Stripe库
 require_once 'db_config.php';
+require_once __DIR__ . '/secrets.php'; // 包含您的Stripe Secret Key
 require_once __DIR__ . '/../vendor/autoload.php';
 
 // 设置Stripe API密钥
-\Stripe\Stripe::setApiKey('sk_test_51OijO1B5KNrksgu9EYiE46NgLQlBAdw1axDlNrzd08sQUWPZzTrxGzrwgFd94VCNnEA5i0wKCmd1HrEVLIIoYgAM00yemogmtZ');
+\Stripe\Stripe::setApiKey($stripeSecretKey);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['productsFile'])) {
     $jsonFile = $_FILES['productsFile']['tmp_name'];

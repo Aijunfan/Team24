@@ -48,7 +48,7 @@ CREATE TABLE addresses (
     country VARCHAR(255) NOT NULL,
     phone_number VARCHAR(255) NOT NULL,
     is_default BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (UserID) REFERENCES users(UserID)
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
 CREATE TABLE orders (

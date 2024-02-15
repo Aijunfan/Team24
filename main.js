@@ -1,7 +1,7 @@
 function uploadProducts(id) {
     const input = document.getElementById(id);
     if (!input.files[0]) {
-        alert('请先选择一个文件。');
+        alert('Please select a file first.');
         return;
     }
     const file = input.files[0];
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 更新单个商品总价
             priceElement.textContent = `$${totalPrice.toFixed(2)}`;
 
-            shipping_fee = parseInt(document.querySelector('.shipping').value)
+            shipping_fee = parseInt(document.querySelector('.shipping-options').value)
             // 累加到Subtotal
             subtotal += totalPrice;
             console.log(subtotal);
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // 初始化和监听选择框的变化
-    document.querySelectorAll('#cartContainer select, .shipping').forEach((selectElement) => {
+    document.querySelectorAll('#cartContainer select, .shipping-options').forEach((selectElement) => {
         selectElement.addEventListener('change', ()=>{
             updatePrices()
             updateCartQuantity()

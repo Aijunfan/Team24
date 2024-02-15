@@ -88,7 +88,7 @@ $addressStmt->close();
                 </div>
                 <div>
                     <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
-                    <select class="shipping block p-2 text-gray-600 w-full text-sm">
+                    <select class="shipping-options block p-2 text-gray-600 w-full text-sm">
                         <option value="5">Standard shipping - $5.00</option>
                         <option value="10">Fast shipping - $10.00</option>
                     </select>
@@ -140,10 +140,12 @@ ob_end_flush(); // Send output buffer and turn off buffering
         alert("You have nothing in your bag!")
         return
     }
+    const shippingOptions = getShippingOption()
     // 构建提交的数据，包括购物车数据和地址ID
     let dataToSubmit = JSON.stringify({
         cartItems: cartItems,
-        address: address // 添加地址ID
+        address: address, // 添加地址ID
+        shippingOptions: shippingOptions
     });
     document.querySelector("#overlay").classList.remove("hidden")
     
@@ -183,6 +185,41 @@ function getAddress(){
         return false
     }
     return address
+}
+function getShippingOption(){
+    let amount = document.querySelector('.shipping-options').value * 100
+    let display_name = 'Standard shipping'
+    let dayValue1 = 5
+    let dayValue2 = 7
+    if (amount==1000) {
+        display_name = 'Fast shipping'
+        dayValue1 = 2
+        dayValue2 = 4
+    }
+    const shippingOptions = [
+        {
+            shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+                amount: amount, // 运费，单位为Stripe的最小货币单位，比如美分
+                currency: 'usd',
+            },
+            display_name: display_name,
+            // Delivers in 5-7 business days
+            delivery_estimate: {
+                minimum: {
+                unit: 'business_day',
+                value: 5,
+                },
+                maximum: {
+                unit: 'business_day',
+                value: 7,
+                },
+            },
+            }
+        },
+    ];
+    return shippingOptions
 }
 
     
