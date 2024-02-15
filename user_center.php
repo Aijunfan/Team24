@@ -407,10 +407,12 @@ $addressStmt->close();
                     set_address_info(e.target.closest('.address-item'))
                     const value = e.target.parentElement.parentElement.querySelector('.address_id').value
                     document.querySelector('.address-form').querySelector('.address_id').value = value
+                    document.querySelector('.delete-btn').classList.remove('hidden')
                 }else if(e.target.getAttribute('data-modal-toggle')== 'new-address-modal'){
                     set_address_info(false)
                     document.querySelector('#modal-address-title').innerHTML = "Add new Address"
                     document.querySelector('.address_id').value = "addNew"
+                    document.querySelector('.delete-btn').classList.add('hidden')
                 }
                 modal.querySelector('#'+lastModal).classList.toggle('hidden')
                 modal.classList.toggle('hidden'); // 切换模态框显示和隐藏

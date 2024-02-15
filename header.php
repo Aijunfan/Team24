@@ -69,20 +69,21 @@ if (session_status() == PHP_SESSION_NONE) {
       </nav>
 
       <div class="lg:w-1/3 md:w-1/2 w-full ">
+      <form action="search.php" method="get">
         <div
           class="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center  md:justify-start items-center">
-          <div class="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
-            <input type="text" id="footer-field" name="footer-field"
-              class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-          </div>
-          <button
-            class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">Search
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-              <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-          </button>
-
+            <div class="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
+              <input type="text" id="search-field" name="query"
+                class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <button  type="submit"
+              class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">Search
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </form>
           <div id="nav-cart" class="relative inline-flex justify-center items-center border-0 px-3" data-pre="Cart">
             <a data-var="anchor" title="Bag Items: 5" aria-label="Bag Items: 5" rel="nofollow" data-type="click_navCart"
               data-path="cart" href="cart.php" class="icon-btn ripple d-sm-b flex justify-center items-center"
