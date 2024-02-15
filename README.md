@@ -45,7 +45,8 @@ Table 1 (Created By YilinLai): Users
 Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes 3.addresses 4.orders 5.order_items
 Table 3 (Created By Aijun Fan): 24_feedback
 Include the ER Diagram of the database.
-![image](https://github.com/Aijunfan/Team24/assets/127038124/3623197d-440b-4f74-8f28-e8900bf3eda7)
+![image](https://github.com/Aijunfan/Team24/assets/127038124/8fe2ecf5-43d8-4f3e-bc4d-db86e875f1d6)
+
 Created Forms
 List and describe any forms that have been created as part of your project. Include details about the purpose of each form and any validation logic.
 
