@@ -1,7 +1,7 @@
 <?php
- ob_start(); // Start buffering output
- include 'init.php';
- include 'header.php'; 
+ob_start(); // Start buffering output
+include 'init.php';
+include 'header.php';
 
 require 'db_config.php'; // 引入数据库配置文件
 // 检查用户是否登录
@@ -20,7 +20,7 @@ $addressResult = $addressStmt->get_result();
 // 创建一个数组来存储所有地址
 $addresses = [];
 // 使用循环来获取所有行
-while($row = $addressResult->fetch_assoc()) {
+while ($row = $addressResult->fetch_assoc()) {
     $addresses[] = $row;
 }
 // 关闭语句
@@ -114,113 +114,114 @@ $addressStmt->close();
                         <span class="total_cost">$0</span>
                     </div>
                     <button
-                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded" onclick="checkout()">Checkout</button>
+                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded"
+                        onclick="checkout()">Checkout</button>
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-<?php include 'footer.php'; 
+<?php include 'footer.php';
 ob_end_flush(); // Send output buffer and turn off buffering
 ?>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
     const stripe = Stripe("pk_test_51OijO1B5KNrksgu9geGURdZZWoDRNMxNOAjtPYpTQcaVQ1eDXlaQodzjJnHE9xXVoIGcDgZadk3JrQGI5LLvZyJl005NCNI1rh");
     function checkout() {
-    const cartData = localStorage.getItem("cart");
-    let address = getAddress()
-    if(!address){
-        alert("Please select a shipping address.");
-        window.location.href="./user_center.php"
-        return
-    }
-    let cartItems = JSON.parse(cartData) || [];
-    if (!cartItems.length) {
-        alert("You have nothing in your bag!")
-        return
-    }
-    const shippingOptions = getShippingOption()
-    // 构建提交的数据，包括购物车数据和地址ID
-    let dataToSubmit = JSON.stringify({
-        cartItems: cartItems,
-        address: address, // 添加地址ID
-        shippingOptions: shippingOptions
-    });
-    document.querySelector("#overlay").classList.remove("hidden")
-    
-    fetch('checkout.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: dataToSubmit   // 直接使用从localStorage获取的购物车数据
-    })
-    .then(response => response.json())
-    .then(session => {
-        if(session.id) {
-            console.log('cartData',cartData)
-            console.log('session',session)
-            // 使用会话ID重定向到Stripe Checkout
-            stripe.redirectToCheckout({ sessionId: session.id })
-            .then(function (result) {
-                // 如果redirectToCheckout失败，可以在这里处理结果（例如，显示错误消息）
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            });
-        } else {
-            // 处理错误（例如显示错误消息）
-            console.error("Failed to create checkout session.", session.error ? session.error : 'Unknown error.');
+        const cartData = localStorage.getItem("cart");
+        let address = getAddress()
+        if (!address) {
+            alert("Please select a shipping address.");
+            window.location.href = "./user_center.php"
+            return
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
+        let cartItems = JSON.parse(cartData) || [];
+        if (!cartItems.length) {
+            alert("You have nothing in your bag!")
+            return
+        }
+        const shippingOptions = getShippingOption()
+        // 构建提交的数据，包括购物车数据和地址ID
+        let dataToSubmit = JSON.stringify({
+            cartItems: cartItems,
+            address: address, // 添加地址ID
+            shippingOptions: shippingOptions
+        });
+        document.querySelector("#overlay").classList.remove("hidden")
 
-function getAddress(){
-    let address = document.querySelector('.shipping-address').innerText
-    if (!address) {
-        return false
-    }
-    return address
-}
-function getShippingOption(){
-    let amount = document.querySelector('.shipping-options').value * 100
-    let display_name = 'Standard shipping'
-    let dayValue1 = 5
-    let dayValue2 = 7
-    if (amount==1000) {
-        display_name = 'Fast shipping'
-        dayValue1 = 2
-        dayValue2 = 4
-    }
-    const shippingOptions = [
-        {
-            shipping_rate_data: {
-            type: 'fixed_amount',
-            fixed_amount: {
-                amount: amount, // 运费，单位为Stripe的最小货币单位，比如美分
-                currency: 'usd',
+        fetch('checkout.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            display_name: display_name,
-            // Delivers in 5-7 business days
-            delivery_estimate: {
-                minimum: {
-                unit: 'business_day',
-                value: 5,
-                },
-                maximum: {
-                unit: 'business_day',
-                value: 7,
-                },
-            },
-            }
-        },
-    ];
-    return shippingOptions
-}
+            body: dataToSubmit   // 直接使用从localStorage获取的购物车数据
+        })
+            .then(response => response.json())
+            .then(session => {
+                if (session.id) {
+                    console.log('cartData', cartData)
+                    console.log('session', session)
+                    // 使用会话ID重定向到Stripe Checkout
+                    stripe.redirectToCheckout({ sessionId: session.id })
+                        .then(function (result) {
+                            // 如果redirectToCheckout失败，可以在这里处理结果（例如，显示错误消息）
+                            if (result.error) {
+                                alert(result.error.message);
+                            }
+                        });
+                } else {
+                    // 处理错误（例如显示错误消息）
+                    console.error("Failed to create checkout session.", session.error ? session.error : 'Unknown error.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
-    
+    function getAddress() {
+        let address = document.querySelector('.shipping-address').innerText
+        if (!address) {
+            return false
+        }
+        return address
+    }
+    function getShippingOption() {
+        let amount = document.querySelector('.shipping-options').value * 100
+        let display_name = 'Standard shipping'
+        let dayValue1 = 5
+        let dayValue2 = 7
+        if (amount == 1000) {
+            display_name = 'Fast shipping'
+            dayValue1 = 2
+            dayValue2 = 4
+        }
+        const shippingOptions = [
+            {
+                shipping_rate_data: {
+                    type: 'fixed_amount',
+                    fixed_amount: {
+                        amount: amount, // 运费，单位为Stripe的最小货币单位，比如美分
+                        currency: 'usd',
+                    },
+                    display_name: display_name,
+                    // Delivers in 5-7 business days
+                    delivery_estimate: {
+                        minimum: {
+                            unit: 'business_day',
+                            value: 5,
+                        },
+                        maximum: {
+                            unit: 'business_day',
+                            value: 7,
+                        },
+                    },
+                }
+            },
+        ];
+        return shippingOptions
+    }
+
+
 </script>

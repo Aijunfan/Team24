@@ -8,7 +8,8 @@ $username_err = $password_err = $email_err = $mobile_err = "";
 $feedback_msg = ""; // 用于存储反馈消息
 
 // 输入清理和验证函数
-function clean_input($data) {
+function clean_input($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -84,10 +85,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // 收集错误信息
-    if (!empty($username_err)) $error_msgs[] = $username_err;
-    if (!empty($password_err)) $error_msgs[] = $password_err;
-    if (!empty($email_err)) $error_msgs[] = $email_err;
-    if (!empty($mobile_err)) $error_msgs[] = $mobile_err;
+    if (!empty($username_err))
+        $error_msgs[] = $username_err;
+    if (!empty($password_err))
+        $error_msgs[] = $password_err;
+    if (!empty($email_err))
+        $error_msgs[] = $email_err;
+    if (!empty($mobile_err))
+        $error_msgs[] = $mobile_err;
 
     // 如果没有错误，继续处理表单并设置成功消息
     if (empty($error_msgs)) {

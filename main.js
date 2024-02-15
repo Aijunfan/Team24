@@ -12,21 +12,21 @@ function uploadProducts(id) {
         method: 'POST',
         body: formData
     })
-    .then(response => {
-        console.log(response.headers.get("Content-Type")); // 检查Content-Type是否正确
-        return response.json(); // 应该不会抛出错误，因为响应是有效的JSON
-    })
-    .then(data => {
-        console.log(data); // 确认解析后的数据
-        alert(data.message);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("发生错误：" + error.toString());
-    });
+        .then(response => {
+            console.log(response.headers.get("Content-Type")); // 检查Content-Type是否正确
+            return response.json(); // 应该不会抛出错误，因为响应是有效的JSON
+        })
+        .then(data => {
+            console.log(data); // 确认解析后的数据
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("发生错误：" + error.toString());
+        });
 }
 
-function toggleOverlay(){
+function toggleOverlay() {
     document.querySelector("#overlay").classList.toggle("hidden")
 }
 // 示例函数：计算购物车中所有物品的总数量并更新页面
@@ -55,7 +55,7 @@ function updateCartQuantity() {
 
 document.addEventListener('DOMContentLoaded', () => {
     const cartContainer = document.querySelector('#cartContainer'); // 定位到购物车容器
-    if(!cartContainer){
+    if (!cartContainer) {
         return
     }
     const cartData = JSON.parse(localStorage.getItem('cart')) || [];
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 动态添加购物车商品
         cartData.forEach((item) => {
             const productElement = document.createElement('div');
-            productElement.classList.add('productElement','flex', 'flex-col', 'md:flex-row', 'items-center', '-mx-8', 'px-6', 'py-5', 'border-b');
+            productElement.classList.add('productElement', 'flex', 'flex-col', 'md:flex-row', 'items-center', '-mx-8', 'px-6', 'py-5', 'border-b');
             productElement.value = item.product_id
             productElement.price = item.price
             // 构建商品基础信息
@@ -116,32 +116,32 @@ document.addEventListener('DOMContentLoaded', () => {
             cartContainer.appendChild(productElement);
         });
         // 为容器添加点击事件监听器
-        cartContainer.addEventListener('click', function(event) {
+        cartContainer.addEventListener('click', function (event) {
             // 判断点击的是否为删除按钮
             // 检查事件的目标是否为你关心的元素或其子元素
             if (event.target.closest('.delete_product') || event.target.classList.contains('delete_product')) {
                 // 1. 读取并解析购物车数据
                 const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
-                
+
                 // 从这里开始，你可以对button进行你需要的操作
                 const items = Array.from(cartContainer.children); // 将子元素转换为数组
                 const parentItem = event.target.closest('.productElement'); // 使用closest找到最近的列表项
                 const index = items.indexOf(parentItem); // 计算下标
-                
+
                 const product_id = parentItem.value
                 // 2. 查找并删除特定项
                 console.log(parentItem);
                 // return 
-                
+
                 const updatedCartData = cartData.filter(item => !(item.product_id == product_id && item.size == parentItem.size));
 
                 // const updatedCartData = cartData.filter(item => item.product_id !== product_id);
                 // 3. 更新localStorage
                 localStorage.setItem("cart", JSON.stringify(updatedCartData));
                 // 执行删除操作，例如移除点击按钮所在的列表项
-                console.log("cartContainer",cartContainer);
+                console.log("cartContainer", cartContainer);
                 cartContainer.children[index].remove();
-                if(cartData.length==1){
+                if (cartData.length == 1) {
                     // setTimeout(() => {
                     document.querySelector('#cartContainer').innerHTML = `
                     <div id="cartContainer">
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // 可以在这里添加其他删除逻辑，如更新数据存储或通知服务器
                 updatePrices();
                 updateCartQuantity()
-                
+
             }
         });
     }
@@ -174,13 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const product_id = productElement.value
             const product_price = productElement.price
             // const found = cartData.find(item => item.product_id === product_id);
-            let item = cartData.find(item => item.product_id === product_id&& item.size == productElement.size);
+            let item = cartData.find(item => item.product_id === product_id && item.size == productElement.size);
             // const updatedCartData = cartData.filter(item => !(item.product_id == product_id && item.size == parentItem.size));
 
             if (item) {
                 item.quantity = quantity; // 修改quantity为5
             }
-            
+
             // 步骤4: 更新localStorage中的数据
             localStorage.setItem("cart", JSON.stringify(cartData));
             const totalPrice = quantity * product_price;
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subtotal += totalPrice;
             console.log(subtotal);
             total_cost = subtotal + shipping_fee
-            
+
         });
 
         // 更新Subtotal总价
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 初始化和监听选择框的变化
     document.querySelectorAll('#cartContainer select, .shipping-options').forEach((selectElement) => {
-        selectElement.addEventListener('change', ()=>{
+        selectElement.addEventListener('change', () => {
             updatePrices()
             updateCartQuantity()
         });

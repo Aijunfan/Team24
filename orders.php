@@ -45,14 +45,14 @@ if (isset($_GET['order_id']) && !empty($_GET['order_id'])) {
     $totalItemsPrice = 0;
     $shippingFee = 0;
     if (!empty($orderDetail)) {
-         // 遍历所有订单项以累加价格
+        // 遍历所有订单项以累加价格
         foreach ($orderItems as $item) {
             $totalItemsPrice += $item['price'] * $item['quantity']; // 假设$item['price']是单价，$item['quantity']是数量
             $shippingFee = $orderDetail['total_price'] - $totalItemsPrice;
 
         }
     }
-   
+
 
     // 计算运费：订单总价减去所有物品的总价
     $itemsStmt->close();
@@ -93,7 +93,8 @@ $conn->close();
                                     </p>
                                     <p class="text-xs text-right text-gray-500">
                                         Status:
-                                        <span class="<?php echo $order['status'] == 'cancel' ? 'text-red-500' : 'text-green-500'; ?>">
+                                        <span
+                                            class="<?php echo $order['status'] == 'cancel' ? 'text-red-500' : 'text-green-500'; ?>">
                                             <?php echo $order['status']; ?>
                                         </span>
                                     </p>
@@ -120,7 +121,7 @@ $conn->close();
                 </div>
                 <div class="border-t border-gray-200">
                     <dl>
-                      <!-- Assuming 'shipping_address' and 'payment_method' are available in $orderDetail -->
+                        <!-- Assuming 'shipping_address' and 'payment_method' are available in $orderDetail -->
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-t">
                             <dt class="text-sm font-medium text-gray-900">
                                 Shipping Address
@@ -128,7 +129,7 @@ $conn->close();
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                 <?php echo htmlspecialchars($orderDetail['shipping_address']); ?>
                             </dd>
-                        </div>  
+                        </div>
 
                         <div class="bg-white px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-t">
                             <dt class="text-sm font-medium text-gray-900">
@@ -137,10 +138,13 @@ $conn->close();
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 overflow-auto  max-h-24">
                                 <?php foreach ($orderItems as $item): ?>
                                     <p>
-                                        <a class="hover:font-medium" href="./detail.php?id=<?php echo htmlspecialchars($item['product_id']); ?>"><?php echo htmlspecialchars($item['name']); ?> (Size:
-                                        <?php echo htmlspecialchars($item['size']); ?>) x
-                                        <?php echo $item['quantity']; ?> - $
-                                        <?php echo number_format($item['price'], 2); ?></a>
+                                        <a class="hover:font-medium"
+                                            href="./detail.php?id=<?php echo htmlspecialchars($item['product_id']); ?>">
+                                            <?php echo htmlspecialchars($item['name']); ?> (Size:
+                                            <?php echo htmlspecialchars($item['size']); ?>) x
+                                            <?php echo $item['quantity']; ?> - $
+                                            <?php echo number_format($item['price'], 2); ?>
+                                        </a>
                                     </p>
                                 <?php endforeach; ?>
                             </dd>
@@ -150,9 +154,10 @@ $conn->close();
                                 Shipping Fee
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                $ <?php echo htmlspecialchars(floor($shippingFee)); ?>
+                                $
+                                <?php echo htmlspecialchars(floor($shippingFee)); ?>
                             </dd>
-                        </div> 
+                        </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-t">
                             <dt class="text-sm font-medium text-gray-500">
                                 Total Price

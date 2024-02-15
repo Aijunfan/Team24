@@ -226,8 +226,8 @@ $conn->close();
         }, 10); // Start the opacity transition slightly after the modal is shown
         event.stopPropagation(); // 防止事件冒泡到document
         let product_count = 0
-        cart.forEach((item)=>{
-            product_count+= item.quantity
+        cart.forEach((item) => {
+            product_count += item.quantity
         })
         document.querySelector('.bag_div').innerHTML = `<div class="flex justify-between items-center">
             <h2 class="text-lg font-semibold text-gray-900 -mt-1">Added to Bag</h2>

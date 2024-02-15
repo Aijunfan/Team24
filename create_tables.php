@@ -25,15 +25,15 @@ $sql_login_logs = "CREATE TABLE IF NOT EXISTS login_logs (
 
 // 执行 SQL 语句
 if ($conn->query($sql_users) === TRUE) {
-    echo "Table 'users' created successfully.<br>";
+  echo "Table 'users' created successfully.<br>";
 } else {
-    echo "Error creating table 'users': " . $conn->error . "<br>";
+  echo "Error creating table 'users': " . $conn->error . "<br>";
 }
 
 if ($conn->query($sql_login_logs) === TRUE) {
-    echo "Table 'login_logs' created successfully.<br>";
+  echo "Table 'login_logs' created successfully.<br>";
 } else {
-    echo "Error creating table 'login_logs': " . $conn->error . "<br>";
+  echo "Error creating table 'login_logs': " . $conn->error . "<br>";
 }
 
 // 关闭数据库连接

@@ -12,7 +12,7 @@ if (!empty($sessionId)) {
     try {
         // 使用Stripe API根据session_id获取Checkout会话详情
         $session = \Stripe\Checkout\Session::retrieve($sessionId);
-        
+
         // 根据会话详情进行逻辑处理，这里以支付状态为例
         $paymentStatus = $session->payment_status;
 
@@ -30,7 +30,7 @@ if (!empty($sessionId)) {
             } else {
                 $response = ['paymentStatus' => 'paid', 'message' => 'No order found or order already updated.'];
             }
-            
+
             $stmt->close();
         } else {
             $response = ['paymentStatus' => $paymentStatus, 'message' => 'Payment not completed or failed.'];
@@ -39,7 +39,7 @@ if (!empty($sessionId)) {
         // 返回信息给前端
         header('Content-Type: application/json');
         echo json_encode($response);
-        
+
     } catch (\Exception $e) {
         // 处理错误
         http_response_code(500);

@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_SESSION['user_id'];
 
     // 获取表单数据
-    $address_id = $_POST['address_id']=="addNew" ? null : $_POST['address_id'];
+    $address_id = $_POST['address_id'] == "addNew" ? null : $_POST['address_id'];
 
     // 如果设置为默认地址，先将所有地址设置为非默认
     if ($is_default == 1) {
@@ -42,10 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($address_id) {
         // 更新操作
         $sql = "UPDATE addresses SET first_name=?, last_name=?, line1=?, line2=?, postcode=?, city=?, province=?, country=?, phone_number=?, is_default=? WHERE address_id=? AND UserID=?";
-        
+
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bind_param("sssssssssiii", $first_name, $last_name, $line1, $line2, $postcode, $city, $province, $country, $phone_number, $is_default, $address_id, $user_id);
-            
+
             if ($stmt->execute()) {
                 $_SESSION["success_message"] = "The address was updated successfully!";
                 header("location: user_center.php?address_update=success");
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["error_message"] = "Something went wrong. Please try again.";
                 echo "Something went wrong. Please try again.";
             }
-            
+
             $stmt->close();
         }
     } else {
@@ -61,12 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 准备SQL语句
         $sql = "INSERT INTO addresses (UserID, first_name, last_name, line1, line2, postcode, city, province, country, phone_number, is_default) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        if($stmt = $conn->prepare($sql)){
+        if ($stmt = $conn->prepare($sql)) {
             // 绑定变量到预准备的语句作为参数
             $stmt->bind_param("isssssssssi", $user_id, $first_name, $last_name, $line1, $line2, $postcode, $city, $province, $country, $phone_number, $is_default);
 
             // 执行语句
-            if($stmt->execute()){
+            if ($stmt->execute()) {
                 // 可以在这里重定向用户回到个人中心或显示一个成功消息
                 // 成功时
                 $_SESSION["success_message"] = "Address added successfully!";

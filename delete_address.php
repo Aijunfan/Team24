@@ -13,12 +13,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 $address_id = $_POST['address_id'] ?? null;
 
 // 进行删除操作
-if($address_id) {
+if ($address_id) {
     // SQL 删除语句
     $sql = "DELETE FROM addresses WHERE address_id = ? AND UserID = ?";
-    if($stmt = $conn->prepare($sql)) {
+    if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("ii", $address_id, $_SESSION['user_id']);
-        if($stmt->execute()) {
+        if ($stmt->execute()) {
             $_SESSION["success_message"] = "The address has been deleted!";
             echo json_encode(['success' => true]);
         } else {

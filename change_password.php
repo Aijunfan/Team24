@@ -22,15 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
         die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
-      }
+    }
     $stmt->bind_param("i", $userId);
     $stmt->execute();
     $stmt->store_result();
-    
+
     if ($stmt->num_rows == 1) {
         $stmt->bind_result($hashed_password);
         $stmt->fetch();
-        
+
         if (password_verify($current_password, $hashed_password)) {
             // 验证新密码和确认新密码是否匹配
             if ($new_password == $confirm_new_password) {
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $updateSql = "UPDATE Users SET PasswordHash = ? WHERE UserID = ?"; // 假设字段名是PasswordHash
                 $updateStmt = $conn->prepare($updateSql);
                 $updateStmt->bind_param("si", $new_hashed_password, $userId);
-                
+
                 if ($updateStmt->execute()) {
                     // 密码更新成功，重定向或显示成功消息
                     $_SESSION["success_message"] = "The password was updated successfully!";
