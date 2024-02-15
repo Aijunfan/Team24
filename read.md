@@ -15,6 +15,7 @@ Our project has developed a range of features to enhance user experience and pro
 - **Product Listing:** Dynamically displays products, allowing users to browse based on categories such as Running, Football, Basketball, Hike, and Others.
 - **Shopping Cart System:** Enables users to add items to their cart and checkout.
 - **User Profile Management:** Users can view and edit their profiles.
+- **Search product:** Users can search for products based on name.
 - **Order Management:** Users can view their past orders and track the status of current orders.
 - **Product Management (Admin):** Admin users can add, edit, or delete products.
 - **Database Interaction:** Includes creating, reading, updating, and deleting (CRUD) operations on the database.
@@ -30,6 +31,9 @@ Our project has developed a range of features to enhance user experience and pro
     - Code: [https://github.com/Aijunfan/Team24/blob/main/feedbackprocess.php]()
 - **Product Listing** 
   - Code: [https://github.com/Aijunfan/Team24/blob/main/products.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/search.php]()
+- **Product searching** 
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/search.php]()
 - **Product detail** 
   - Code: [https://github.com/Aijunfan/Team24/blob/main/detail.php]()
 - **Shopping Cart System** 
