@@ -79,7 +79,7 @@ $addressStmt->close();
         <div id="Profile"
             class=" tab-content p-6  text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Profile</h3>
-            <form action="update_user_info.php" method="post" class="profile ">
+            <form action="update_user_info.php" method="post" class="profile overlay-form">
                 <div class="mb-6">
                     <label for="Username"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
@@ -113,7 +113,7 @@ $addressStmt->close();
                     </div>
                 </div>
                 <button type="submit"
-                    class="text-white  bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">Submit</button>
+                    class="transition-all duration-300 text-white  bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">Submit</button>
             </form>
         </div>
 
@@ -164,7 +164,7 @@ $addressStmt->close();
 
             if (count($addresses) < 3) {
                 echo '<div class="flex justify-end mt-6">
-                                    <button type="button" data-modal-target="address-modal" data-modal-toggle="new-address-modal" class="rounded-full text-white bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto p-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">
+                                    <button type="button" data-modal-target="address-modal" data-modal-toggle="new-address-modal" class="transition-all duration-300 rounded-full text-white bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto p-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">
                                         Add address
                                     </button>
                                 </div>';
@@ -190,7 +190,7 @@ $addressStmt->close();
         <div class="mb-4 flex items-center justify-between pb-2 border-b rounded-t dark:border-gray-600">
             <h3 id="modal-address-title" class="text-xl font-semibold text-gray-900 dark:text-white">Edit Address</h3>
             <button type="button"
-                class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                class="transition-all duration-300 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                 data-modal-hide="password-modal">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 14 14">
@@ -200,7 +200,7 @@ $addressStmt->close();
                 <span class="sr-only">Close modal</span>
             </button>
         </div>
-        <form class="address-form" action="save_address.php" method="post">
+        <form class="address-form overlay-form" action="save_address.php" method="post">
             <input class="address_id" type="hidden" name="address_id" value="">
             <div class="grid gap-6 mb-2 md:grid-cols-2">
                 <div>
@@ -284,11 +284,11 @@ $addressStmt->close();
             </div>
             <div class="flex items-center justify-end">
                 <button type="submit"
-                    class="mr-2 leading-normal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    class="transition-all duration-300 mr-2 leading-normal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Save
                 </button>
                 <button type="button"
-                    class="delete-btn leading-normal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    class="transition-all duration-300 delete-btn leading-normal text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     Delete
                 </button>
             </div>
@@ -339,7 +339,7 @@ $addressStmt->close();
                         required>
                 </div>
                 <button type="submit"
-                    class="text-white bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">Submit</button>
+                    class="transition-all duration-300 text-white bg-indigo-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 hover:bg-indigo-600 dark:focus:ring-blue-800">Submit</button>
             </form>
         </div>
     </div>
@@ -392,7 +392,7 @@ $addressStmt->close();
                         .then(data => {
                             if (data.success) {
                                 // 处理成功，例如重定向或刷新页面
-                                window.location.reload();
+                                // window.location.reload();
                             } else {
                                 // 显示错误消息
                                 alert('Error: ' + data.error);
@@ -409,6 +409,16 @@ $addressStmt->close();
     //     }
     // });
     document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('submit', function (event) {
+        // 确保事件来源是“.overlay-form”
+            if (event.target.matches('.overlay-form')) {
+                event.preventDefault(); // 阻止表单默认提交行为
+                // 在这里添加您的表单处理逻辑
+                toggleOverlay();
+                document.querySelector('.overlay-form').submit()
+                // 可以在这里通过AJAX发送数据，或直接调用form.submit()提交表单
+            }
+        });
         change_password()
         delete_address()
         // 你的代码放在这里

@@ -33,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['productsFile'])) {
         $stripeProduct = \Stripe\Product::create([
             'name' => $product['name'],
             'description' => $product['info'],
-            // 省略其他Stripe产品创建的代码...
         ]);
 
         // 为商品创建价格
@@ -41,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['productsFile'])) {
             'product' => $stripeProduct->id,
             'unit_amount' => $product['price'] * 100, // 假设价格以美元存储，转换为分
             'currency' => 'usd',
-            // 省略其他Stripe价格创建的代码...
         ]);
 
         // 准备批量插入的SQL语句，包括stripe_price_id

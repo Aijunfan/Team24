@@ -114,7 +114,7 @@ $addressStmt->close();
                         <span class="total_cost">$0</span>
                     </div>
                     <button
-                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded"
+                        class="transition-all duration-300  bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded"
                         onclick="checkout()">Checkout</button>
                 </div>
             </div>

@@ -51,7 +51,7 @@
             required></textarea>
         </div>
         <button type="submit" name="submit"
-          class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+          class="transition-all duration-300 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
         <p class="text-xs text-gray-500 mt-3">We will get back to you as soon as possible.</p>
       </div>
     </div>

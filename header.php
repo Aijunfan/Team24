@@ -15,7 +15,7 @@ if (session_status() == PHP_SESSION_NONE) {
   <title>24-Sports</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="main.css?v2s222121122222">
+  <link rel="stylesheet" href="main.css?v2s2221221122222">
   <script src="main.js?v112"></script>
 
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -84,7 +84,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
             <button type="submit"
-              class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">Search
+              class="transition-all duration-300 inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0">Search
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -96,7 +96,7 @@ if (session_status() == PHP_SESSION_NONE) {
             data-path="cart" href="cart.php" class="icon-btn ripple d-sm-b flex justify-center items-center"
             data-pre="ILink" previewlistener="true">
             <div
-              class="flex justify-center items-center hover:bg-gray-200 rounded-full p-1 transition-all duration-150">
+              class="transition-all duration-300 flex justify-center items-center hover:bg-gray-200 rounded-full p-1 ">
               <svg aria-hidden="true" class="w-8 h-8" focusable="false" viewBox="0 0 24 24" role="img" width="24px"
                 height="24px" fill="none">
                 <path stroke="currentColor" stroke-width="1.5"

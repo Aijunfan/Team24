@@ -169,3 +169,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </section>
 <?php include 'footer.php'; ?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", function(event) {
+        let hasError = false;
+
+        // 用户名验证
+        const username = document.getElementById("username").value;
+        if (username.length === 0 || username.length > 20) {
+            alert("Please enter a username with 1 to 20 characters.");
+            hasError = true;
+        }
+
+        // 密码验证
+        const password = document.getElementById("password").value;
+        if (password.length < 6) {
+            alert("Password must have at least 6 characters.");
+            hasError = true;
+        }
+
+        // 电子邮件验证
+        const email = document.getElementById("email").value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Invalid email format.");
+            hasError = true;
+        }
+
+        // 手机号码验证（可选）
+        const mobile = document.getElementById("mobile").value;
+        const mobilePattern = /^[\d]{10,15}$/; // 根据实际需要调整正则表达式
+        if (mobile && !mobilePattern.test(mobile)) {
+            alert("Invalid mobile number format.");
+            hasError = true;
+        }
+
+        if (hasError) {
+            event.preventDefault(); // 阻止表单提交
+        }
+    });
+});
+</script>

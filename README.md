@@ -1,61 +1,72 @@
-
-# Project Name - Team 24 
-
+# Team24 Sports Web Development Project
 ## Team members: Aijun Fan, Hao Zhang, Yilin Lai, Zheng Tian.
+This project aims to create a dynamic and responsive e-commerce platform for sports equipment, focusing on user interaction and seamless product management.
 
-This is a shopping site that showcases different types of shoes.
+## Explanation.
+Due to the access to Stripe payment system, many parts of our project depend on Stripe's official packages, we don't have enough privileges to install the relevant packages on shell.hamk.fi, which will result in our project not being able to display properly on shell.hamk.fi.
 
-Table of Contents
-Features
-Database Tables
-Created Forms
+## Table of Contents
+- [Features](#features)
+- [Database Tables](#database-tables)
+- [Created Forms](#created-forms)
+- [Created Tables](#created-tables)
 
-Features
+## Features
+Our project has developed a range of features to enhance user experience and provide robust functionality:
 
-In this section, list and describe the features or functionality that you are working on. You can use checkboxes to track the progress of each feature.
+- **User Authentication:** Implements secure login and registration processes.
+- **Product Listing:** Dynamically displays products, allowing users to browse based on categories such as Running, Football, Basketball, Hike, and Others.
+- **Shopping Cart System:** Enables users to add items to their cart and checkout.
+- **User Profile Management:** Users can view and edit their profiles.
+- **Order Management:** Users can view their past orders and track the status of current orders.
+- **Checkout:** Users can checkout make payment.
+- **Product Management (Admin):** Admin users can add, edit, or delete products.
+- **Database Interaction:** Includes creating, reading, updating, and deleting (CRUD) operations on the database.
 
- Feature 1 (Yilin Lai): Customer sign in / sign up
- Feature 2 (Hao Zhang): Product list table, usercenter(prifile/address),shopping cart,checkout,orders
- Feature 3 (Aijun Fan): Suggestion and feedback table
+### Detailed Features
+- **User Authentication** - Yilin Lai
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/login.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/logout.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/join.php]()
 
-Feature 1
-Sign in / Sign up
-User registration and login operations are all performed on this page. If it is a new user, go through the registration process and then log in; if it is a registered user, go through the login process directly.
+- **User FeedBack** - Aijun Fan
+    - Code: [https://github.com/Aijunfan/Team24/blob/main/feedback.php]()
+    - Code: [https://github.com/Aijunfan/Team24/blob/main/feedbackprocess.php]()
+- **Product Listing** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/products.php]()
+- **Product detail** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/detail.php]()
+- **Shopping Cart System** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/cart.php]()
+- **User Profile Management** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/user_center.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/update_user_info.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/change_password.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/save_address.php]()
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/delete_address.php]()
+- **Order Management** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/orders.php]()
+- **Product Management (Admin)** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/upload_products.php]()
 
-Feature 2
-Shopping Cart
+- **Payment Gateway** - Hao Zhang
+  - Code: [https://github.com/Aijunfan/Team24/blob/main/checkout.php]()
 
-Feature 3
-Payment (stripe)
-
-Feature 4
-Order Details
-
-Feature 5
-User Center, Modify User Information/Password, Add/Delete/Edit Address
-
-Feature 6
-Set up an interface to collect customer feedback and suggestions with forms such as ID, email or phone number, topic, content, etc.
-Provide links to related code files (github) & link to the feature (shell.hamk.fi) .
-
-Database Tables
-List the database tables that are part of your project.
-
-Table 1 (Created By YilinLai): Users
-Table 2 (Created By HaoZhang): 1.Products  2.ProductSizes 3.addresses 4.orders 5.order_items
-Table 3 (Created By Aijun Fan): 24_feedback
-Include the ER Diagram of the database.
+## Database Tables
+- **Users:** Stores user login and profile information.
+- **Products:** Contains information about products.
+- **ProductSizes:** Contains information about products Sizes info.
+- **Orders:** Manages data on user orders.
+- **OrderItems:** Tracks items within each order.
+- **24_feedback:** user feedback info.
+- **addresses:** user addresses info.
 ![image](https://github.com/Aijunfan/Team24/assets/127038124/8fe2ecf5-43d8-4f3e-bc4d-db86e875f1d6)
 
-Created Forms
-List and describe any forms that have been created as part of your project. Include details about the purpose of each form and any validation logic.
-
-Form 1 (Created By): Form Name: Link to the related code file (github) | Link to the form (shell.hamk.fi). | Validations Applied
-Form 2: (Created By): Form Name: Link to the related code file (github) | Link to the form (shell.hamk.fi). | Validations Applied
-Form 3: (Created By): Form Name: Link to the related code file (github) | Link to the form (shell.hamk.fi). | Validations Applied
-Created Tables
-List any tables that you have created in the project work
-
-Table 1 (Created By): Table Name | Link to the related code file (github) | Link to the table (shell.hamk.fi).
-Table 2 (Created By): Table Name | Link to the related code file (github) | Link to the table (shell.hamk.fi).
-Table 3 (Created By): Table Name | Link to the related code file (github) | Link to the table (shell.hamk.fi).
+## Progress Tracking
+- [x] User Authentication signup/login/logout
+- [x] Product Listing 
+- [x] Shopping Cart Implementation - add/delete/update product quantity and price
+- [x]Payment Gateway Integration (TestMode) - use Stripe https://stripe.com/
+- [x] User Profile Management - update user info/password, addresses CRUD 
+- [x] Order Management - check/update order status  
+- [x] Admin Product Management - upload data.json to database and use stripe Api to get products price_id.
