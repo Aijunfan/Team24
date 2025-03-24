@@ -1,5 +1,5 @@
 # Team24 Sports Web Development Project
-## Team members: Aijun Fan, Hao Zhang, Yilin Lai, Zheng Tian.
+## Team members: Aijun Fan, Hao Zhang, Yilin Lai, Mengyuan Li.
 This project aims to create a dynamic and responsive e-commerce platform for sports equipment, focusing on user interaction and seamless product management.
 
 ## Explanation.
@@ -32,9 +32,9 @@ Our project has developed a range of features to enhance user experience and pro
 - **User FeedBack** - Aijun Fan
     - Code: [https://github.com/Aijunfan/Team24/blob/main/feedback.php]()
     - Code: [https://github.com/Aijunfan/Team24/blob/main/feedbackprocess.php]()
-- **Product Listing** - Hao Zhang
+- **Product Listing** - Mengyuan Li
   - Code: [https://github.com/Aijunfan/Team24/blob/main/products.php]()
-- **Product detail** - Hao Zhang
+- **Product detail** - Mengyuan Li
   - Code: [https://github.com/Aijunfan/Team24/blob/main/detail.php]()
 - **Shopping Cart System** - Hao Zhang
   - Code: [https://github.com/Aijunfan/Team24/blob/main/cart.php]()
